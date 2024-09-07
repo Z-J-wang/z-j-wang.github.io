@@ -1,28 +1,44 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: 'Jay 的博客',
+  description: 'Jay 的博客',
+  lastUpdated: true, // 默认开启markdown最后更新时间
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }], // 设置网站图标
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Examples', link: '/markdown-examples' },
     ],
-
     sidebar: [
       {
         text: 'Examples',
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
+          { text: 'Runtime API Examples', link: '/api-examples' },
+        ],
+      },
     ],
-
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Z-J-wang/z-j-wang.github.io/' }
-    ]
-  }
-})
+      {
+        icon: 'github',
+        link: 'https://github.com/Z-J-wang/z-j-wang.github.io/',
+      },
+    ],
+    editLink: {
+      pattern:
+        'https://github.com/Z-J-wang/z-j-wang.github.io/edit/main/docs/:path',
+    },
+    lastUpdated: {
+      text: '更新时间',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium',
+      },
+    },
+  },
+});
