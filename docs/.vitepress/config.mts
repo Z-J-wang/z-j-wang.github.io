@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
 import { withMermaid } from "vitepress-plugin-mermaid"; // https://vitepress.dev/config/
+import { tasklist } from "@mdit/plugin-tasklist";
 
 export default withMermaid({
   ...defineConfig({
@@ -10,7 +11,10 @@ export default withMermaid({
       ['link', { rel: 'icon', href: '/favicon.ico' }], // 设置网站图标
     ],
     markdown: {
-      lineNumbers: true
+      lineNumbers: true, // 设置markdown代码块行号
+      config: (md) => {
+        md.use(tasklist) // 引入任务列表支持的插件
+      }, // 设置markdown插件
     }, // 设置markdown配置
     themeConfig: {
       logo: '/logo.png', // 设置网站logo
@@ -19,6 +23,7 @@ export default withMermaid({
         { text: 'Home', link: '/' },
         { text: 'Examples', link: '/markdown-examples' },
         { text: '杂谈', link: '/tittle-tattle/《探讨——关于三层架构在前端项目的应用》第一版' },
+        { text: 'TODO', link: '/todo-list' },
       ],
       sidebar: {
         '/': [{
