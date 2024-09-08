@@ -8,6 +8,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }], // 设置网站图标
   ],
+  srcDir: 'src', // 设置源目录
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
