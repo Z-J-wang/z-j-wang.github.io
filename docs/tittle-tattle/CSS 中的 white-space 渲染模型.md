@@ -76,9 +76,9 @@
 
 ## 结语
 
-了解了**"white-space" 处理模型**后，我们也理解前言提及到了两个问题的缘由。在HTML编码过程中，如果遇到文本字符的缺失或者新增，不妨往**"white-space" 处理模型**思考，可能就会发现问题的原因了。
+了解了"white-space"处理模型后，我们也理解前言提及到了两个问题的缘由。在HTML编码过程中，如果遇到文本字符的缺失或者新增，不妨往"white-space" 处理模型思考，可能就会发现问题的原因了。
 
-在这最后，本文仅是个人理解。可能存在有误。部分规则本人还未在代码中重现处理。极力建议**"white-space" 处理模型**说明原文——《[Text (w3.org)](https://www.w3.org/TR/CSS22/text.html#white-space-model)》。本文仅仅是个引子。
+在这最后，本文仅是个人理解。可能存在有误。部分规则本人还未在代码中重现处理。极力建议"white-space" 处理模型说明原文——《[Text (w3.org)](https://www.w3.org/TR/CSS22/text.html#white-space-model)》。本文仅仅是个引子。
 
 ## 参考文章
 
