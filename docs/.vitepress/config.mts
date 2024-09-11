@@ -6,6 +6,7 @@ export default withMermaid({
   ...defineConfig({
     title: 'Jay 的博客',
     description: 'Jay 的博客',
+    lang: 'zh-CN',
     lastUpdated: true, // 默认开启markdown最后更新时间
     head: [
       ['link', { rel: 'icon', href: '/favicon.ico' }], // 设置网站图标
@@ -22,7 +23,7 @@ export default withMermaid({
       nav: [
         { text: 'Home', link: '/' },
         { text: 'Examples', link: '/markdown-examples' },
-        { text: '杂谈', link: '/tittle-tattle/《探讨——关于三层架构在前端项目的应用》第一版' },
+        { text: '杂谈', link: '/tittle-tattle' },
         { text: 'TODO', link: '/todo-list' },
       ],
       sidebar: {
@@ -35,8 +36,11 @@ export default withMermaid({
         }],
         '/tittle-tattle/': [{
           text: '杂谈',
+          collapsed: false,
           items: [
             { text: '《探讨——关于三层架构在前端项目的应用》第一版', link: '/tittle-tattle/《探讨——关于三层架构在前端项目的应用》第一版' },
+            { text: 'CSS 中的 white-space 渲染模型', link: '/tittle-tattle/CSS 中的 white-space 渲染模型' },
+            { text: 'markdown 字体颜色说明', link: '/tittle-tattle/markdown 字体颜色说明' },
           ],
         }],
       },
