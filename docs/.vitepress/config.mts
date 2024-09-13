@@ -41,6 +41,7 @@ export default withMermaid({
             { text: '《探讨——关于三层架构在前端项目的应用》第一版', link: '/tittle-tattle/《探讨——关于三层架构在前端项目的应用》第一版' },
             { text: 'CSS 中的 white-space 渲染模型', link: '/tittle-tattle/CSS 中的 white-space 渲染模型' },
             { text: 'markdown 字体颜色说明', link: '/tittle-tattle/markdown 字体颜色说明' },
+            { text: '跨域问题浅析', link: '/tittle-tattle/跨域问题浅析' },
           ],
         }],
       },
