@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: 联系我
-      link: /markdown-examples
+      link: mailto:Jay040030@outlook.com
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: CSDN
+      link: https://blog.csdn.net/weixin_44869002?spm=1000.2115.3001.5343
 
 features:
   - title: 杂谈专栏
