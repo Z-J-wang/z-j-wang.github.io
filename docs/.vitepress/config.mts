@@ -5,7 +5,7 @@ import { tasklist } from "@mdit/plugin-tasklist";
 export default withMermaid({
   ...defineConfig({
     title: 'Jay 的博客',
-    description: 'Jay 的博客',
+    description: '本博客专注于分享 Web 开发以及相关的领域的知识。无论您是行业专家还是初学者，相信这里都能找到有价值的内容。期待与您相互学习、共同进步。',
     lang: 'zh-CN',
     lastUpdated: true, // 默认开启markdown最后更新时间
     head: [
