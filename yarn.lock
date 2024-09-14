@@ -604,6 +604,13 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@mdit/plugin-footnote@^0.13.1":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/@mdit/plugin-footnote/-/plugin-footnote-0.13.1.tgz#a800e61c67e80554aec74138c836ccf542da397b"
+  integrity sha512-46TzNvY9QXO5y6MbXlewCe+gfw3lgF2IFQCs0enaWVSgKNaGxOuecDR68SlbLPc7unJQCcs5Bb/XB4xsx0depQ==
+  dependencies:
+    "@types/markdown-it" "^14.1.2"
+
 "@mdit/plugin-tasklist@^0.13.1":
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/@mdit/plugin-tasklist/-/plugin-tasklist-0.13.1.tgz#08cd5f23965e26e54b3443cad8784daa7314eaae"

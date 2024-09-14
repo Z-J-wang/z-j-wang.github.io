@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@mdit/plugin-footnote": "^0.13.1",
     "@mdit/plugin-tasklist": "^0.13.1",
     "@vue/eslint-config-prettier": "^9.0.0",
     "eslint": "^8.39.0",

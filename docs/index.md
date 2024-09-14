@@ -18,8 +18,9 @@ features:
   - title: 杂谈专栏
     details: 一些闲聊、一些瞎扯、一些突发奇想、一些乱七八糟。
     link: /tittle-tattle
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 前端与 SEO 专栏
+    details: 深入探讨 SEO 的概念、相关知识和在前端项目中的优化方法。
+    link: /seo
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
