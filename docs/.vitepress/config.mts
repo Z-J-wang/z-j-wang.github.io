@@ -51,7 +51,8 @@ export default withMermaid({
               },
               { text: 'CSS 中的 white-space 渲染模型', link: '/tittle-tattle/CSS 中的 white-space 渲染模型' },
               { text: 'markdown 字体颜色说明', link: '/tittle-tattle/markdown 字体颜色说明' },
-              { text: '跨域问题浅析', link: '/tittle-tattle/跨域问题浅析' }
+              { text: '跨域问题浅析', link: '/tittle-tattle/跨域问题浅析' },
+              { text: '认识 meta 标签', link: '/tittle-tattle/meta' }
             ]
           }
         ],
