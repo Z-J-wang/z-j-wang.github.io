@@ -24,22 +24,12 @@ export default withMermaid({
       logo: '/logo.png', // 设置网站logo
       // https://vitepress.dev/reference/default-theme-config
       nav: [
-        { text: 'Home', link: '/' },
-        { text: 'Examples', link: '/markdown-examples' },
+        { text: '首页', link: '/' },
         { text: '杂谈', link: '/tittle-tattle' },
         { text: '前端与 SEO', link: '/seo' },
         { text: 'TODO', link: '/todo-list' }
       ],
       sidebar: {
-        '/': [
-          {
-            text: 'Examples',
-            items: [
-              { text: 'Markdown Examples', link: '/markdown-examples' },
-              { text: 'Runtime API Examples', link: '/api-examples' }
-            ]
-          }
-        ],
         '/tittle-tattle/': [
           {
             text: '杂谈',
