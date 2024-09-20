@@ -105,6 +105,10 @@ export default withMermaid({
       returnToTopLabel: '返回顶部',
       search: {
         provider: 'local'
+      },
+      footer: {
+        message: 'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
+        copyright: 'Copyright © 2023-present <a href="https://github.com/Z-J-wang">Jay</a>'
       }
     },
     sitemap: {
