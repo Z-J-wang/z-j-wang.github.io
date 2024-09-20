@@ -106,6 +106,9 @@ export default withMermaid({
       search: {
         provider: 'local'
       }
+    },
+    sitemap: {
+      hostname: 'https://z-j-wang.github.io/',
     }
   }),
   // mermaid 配置项。详见：https://mermaid.js.org/config/setup/modules/mermaid.html
