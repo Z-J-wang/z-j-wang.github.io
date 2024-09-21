@@ -27,7 +27,7 @@ head:
 
 ## meta 简述
 
-**`<meta>`元素用于设置当前网页的元数据。**例如：网页描述、作者、针对搜素引擎的关键字等等。
+**`<meta>`元素用于设置当前网页的元数据**。例如：网页描述、作者、针对搜素引擎的关键字等等。
 
 > <font color="#3170a7">什么是元数据（**Metadata**）？</font>
 >
@@ -50,7 +50,7 @@ head:
 >   - `<meta name> `可以写在任何可以接收 [metadata content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#metadata_content) 内容的标签中
 >   - `<meta itemprop>`可以写在任何可以接收 [metadata content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#metadata_content) 或 [flow content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#flow_content) 内容的标签中
 
-> <font color="#f20c00"> **注意：**</font>在 XHTML 中 <meta> 标签必须包含结束标签。
+> **注意**：在 XHTML 中 `<meta>` 标签必须包含结束标签。
 
 ## meta 元素的属性
 
@@ -64,17 +64,17 @@ meta 元素的常用属性有四个：
 
 使用这些属性时有几个要注意的地方：
 
-- `name`/`http-equiv` 必须搭配 `content` 使用，与 `content` 组成键值对（`key-value`）。其中 `name`/`http-equiv` 定义了 key，`content` 则设置了 value。
+- `name`/`http-equiv` 必须搭配 `content` 使用，与 `content` 组成键值对（`key-value`）。其中 `name`/`http-equiv` 定义了 Key，`content` 则设置了 Value。
 - `http-equiv` 主要是用于控制浏览器行为。**其值仅支持特定的 HTTP head 的名称，并不是所有。**详见章节：常用性 meta 标签汇总
 - `charset` 不需要和其他属性搭配。其值必须是字符编码，且应该写在所有的元数据前面（即，`<head>` 元素的第一个子元素）。这是因为`charset` 定义了整个 document 的编码类型，如果没定义或者位置比较靠后，浏览器在读取到 `charset` 之前可能会没法正常解析。
 
-> <font color="#3170a7">**字符串编码说明：**</font>
+> <font color="#3170a7" style="font-weight: bold">字符串编码说明：</font>
 >
 > 绝大多数情况下，都应该字符串编码设置为`utf-8`。`utf-8` 能保证绝大多数的语言文字正常显示。
 >
 > 详情说明：[Choosing & applying a character encoding (w3.org)](https://www.w3.org/International/questions/qa-choosing-encodings)
 
-> <font color="#f20c00">**注：** </font>
+> <font color="#f20c00" style="font-weight: bold">注：</font>
 >
 > - 如果没有提供 name 属性，那么名称/值对中的名称会采用 http-equiv 属性的值。
 >

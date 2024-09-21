@@ -2,6 +2,37 @@ import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid' // https://vitepress.dev/config/
 import { tasklist } from '@mdit/plugin-tasklist'
 import { footnote } from '@mdit/plugin-footnote'
+import { getSideBar } from 'vitepress-plugin-autobar'
+
+interface SideBar {
+  text: string
+  link: string
+}
+
+/**
+ * 提取指定目录下的md文件，生成侧边栏
+ * @param customSideBars 自定义侧边栏，customSideBars中的侧边栏不会重复生成，不进行排序，且排在最前面
+ * @param path 待生成的目录路径，如：'/tittle-tattle'
+ * @param options getSideBar options 默认值：{ ignoreMDFiles: ['index'] }
+ * @returns 
+ */
+const createSideBar = (customSideBars: SideBar[], path: string, options?: any): SideBar[] => {
+  const defaultOptions = {
+    ignoreMDFiles: ['index'],
+  }
+
+  return customSideBars.concat(getSideBar('./docs' + path, options || defaultOptions).reduce((sideBars: SideBar[], item: any) => {
+    let { text, link } = item.items[0]
+    link = path + '/' + link
+
+    // 排除自定义侧边栏中的链接
+    if (!customSideBars.some(customItem => customItem.link === link)) {
+      sideBars.push({ text, link })
+    }
+    return sideBars
+  }, [])
+    .sort((a: SideBar, b: SideBar) => a.text.localeCompare(b.text))) // 按侧边栏名称升序排序
+}
 
 export default withMermaid({
   ...defineConfig({
@@ -24,50 +55,30 @@ export default withMermaid({
       logo: '/logo.png', // 设置网站logo
       // https://vitepress.dev/reference/default-theme-config
       nav: [
-        { text: 'Home', link: '/' },
-        { text: 'Examples', link: '/markdown-examples' },
+        { text: '首页', link: '/' },
         { text: '杂谈', link: '/tittle-tattle' },
         { text: '前端与 SEO', link: '/seo' },
         { text: 'TODO', link: '/todo-list' }
       ],
       sidebar: {
-        '/': [
-          {
-            text: 'Examples',
-            items: [
-              { text: 'Markdown Examples', link: '/markdown-examples' },
-              { text: 'Runtime API Examples', link: '/api-examples' }
-            ]
-          }
-        ],
-        '/tittle-tattle/': [
-          {
-            text: '杂谈',
-            collapsed: false,
-            items: [
-              {
-                text: '《探讨——关于三层架构在前端项目的应用》第一版',
-                link: '/tittle-tattle/《探讨——关于三层架构在前端项目的应用》第一版'
-              },
-              { text: 'CSS 中的 white-space 渲染模型', link: '/tittle-tattle/CSS 中的 white-space 渲染模型' },
-              { text: 'markdown 字体颜色说明', link: '/tittle-tattle/markdown 字体颜色说明' },
-              { text: '跨域问题浅析', link: '/tittle-tattle/跨域问题浅析' },
-              { text: '认识 meta 标签', link: '/tittle-tattle/meta' }
-            ]
-          }
-        ],
+        '/tittle-tattle/': [{
+          text: '杂谈',
+          collapsed: false,
+          items: createSideBar([{ text: '关于三层架构在前端项目的应用', link: '/tittle-tattle/关于三层架构在前端项目的应用' }], '/tittle-tattle'),
+        }],
         '/seo/': [
           {
             text: '前端与 SEO',
             collapsed: false,
-            items: [
-              { text: '第一章：什么是 SEO', link: '/seo/第一章：什么是 SEO' },
-              { text: '第二章：站点地图', link: '/seo/第二章：sitemap' },
-              { text: '第三章：robots.txt', link: '/seo/第三章：robots.txt' },
-              { text: '第四章：meta 与 SEO', link: '/seo/第四章：meta 与 SEO' },
-              { text: '第五章：SPA 与 SSR 对 SEO 的影响', link: '/seo/第五章：SPA 与 SSR 对 SEO 的影响' },
-              { text: '第六章：前端开发人员的一些SEO优化方法', link: '/seo/第六章：前端开发人员的一些SEO优化方法' }
-            ]
+            items:
+              createSideBar([
+                { text: '第一章：什么是 SEO', link: '/seo/第一章：什么是 SEO' },
+                { text: '第二章：站点地图', link: '/seo/第二章：sitemap' },
+                { text: '第三章：robots.txt', link: '/seo/第三章：robots.txt' },
+                { text: '第四章：meta 与 SEO', link: '/seo/第四章：meta 与 SEO' },
+                { text: '第五章：SPA 与 SSR 对 SEO 的影响', link: '/seo/第五章：SPA 与 SSR 对 SEO 的影响' },
+                { text: '第六章：前端开发人员的一些SEO优化方法', link: '/seo/第六章：前端开发人员的一些SEO优化方法' }
+              ], '/seo'),
           }
         ]
       },
@@ -94,7 +105,14 @@ export default withMermaid({
       returnToTopLabel: '返回顶部',
       search: {
         provider: 'local'
+      },
+      footer: {
+        message: 'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
+        copyright: 'Copyright © 2023-present <a href="https://github.com/Z-J-wang">Jay</a>'
       }
+    },
+    sitemap: {
+      hostname: 'https://z-j-wang.github.io/',
     }
   }),
   // mermaid 配置项。详见：https://mermaid.js.org/config/setup/modules/mermaid.html

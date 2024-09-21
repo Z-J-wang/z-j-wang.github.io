@@ -1,7 +1,7 @@
 <script setup>
   import { useData } from 'vitepress'
 
-  const {  theme } = useData()
+  const { theme } = useData()
   const list = theme.value.sidebar['/tittle-tattle/'][0].items // 读取config.sidebar配置
 </script>
 
