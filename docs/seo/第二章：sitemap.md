@@ -1,11 +1,7 @@
 ---
-head:
-  - - meta
-    - name: description
-      content: 前端与 SEO，第二章：站点地图 （sitemap）
-  - - meta
-    - name: keywords
-      content: SEO,前端,优化,搜索引擎,网站排名,搜索引擎优化,网站收录,网站优化,前端优化,搜索引擎抓取,robots.txt,sitemap
+author: 王志杰
+description: 前端与 SEO，第二章：站点地图 （sitemap）
+keywords: SEO,前端,优化,搜索引擎,网站排名,搜索引擎优化,网站收录,网站优化,前端优化,搜索引擎抓取,robots.txt,sitemap
 ---
 
 # 第二章：站点地图
