@@ -1,11 +1,8 @@
 ---
-head:
-  - - meta
-    - name: description
-      content: robots.txt 文件是网站对搜索引擎抓取工具[^1]的抓取行为的规则声明。robots.txt 文件中写明了**什么搜索引擎抓取工具可以做什么事**。它就类似于学校的学生行为规范。
-  - - meta
-    - name: keywords
-      content: robots.txt,SEO,搜索引擎优化
+author: 王志杰
+date: 2024-09-22
+keywords: robots.txt,SEO,搜索引擎优化
+description: robots.txt 文件是网站对搜索引擎抓取工具的抓取行为的规则声明。robots.txt 文件中写明了**什么搜索引擎抓取工具可以做什么事**。它就类似于学校的学生行为规范。
 ---
 
 # 第三章：robots.txt

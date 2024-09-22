@@ -1,11 +1,9 @@
-
-
 /* eslint-env node */
- module.exports = {
+module.exports = {
   extends: ['stylelint-config-standard'],
   plugins: ['stylelint-order'],
   rules: {
-  'color-hex-case': 'lower', // 颜色指定小写
+    'color-hex-case': 'lower', // 颜色指定小写
     'block-no-empty': true, // 禁止空块
     'color-hex-length': 'long', // 颜色6位长度
     'declaration-block-trailing-semicolon': ['always', { ignore: ['single-declaration'] }], // 在声明块中使用尾随分号
@@ -111,4 +109,4 @@
       'transition'
     ]
   }
-};
+}

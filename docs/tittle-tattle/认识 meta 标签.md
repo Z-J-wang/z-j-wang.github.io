@@ -1,11 +1,8 @@
 ---
-head:
-  - - meta
-    - name: description
-      content: 本文详细介绍了HTML中的<meta>标签及其作用。<meta>标签主要用于设置当前网页的元数据，如网页描述、作者、针对搜索引擎的关键字等等。<meta>元素有四个常用属性：name、http-equiv、content和charset。其中，name和http-equiv必须搭配content使用，http-equiv主要用于控制浏览器行为，charset用于设置文档的字符编码。文章还介绍了meta元素的分类，包括Meta charset类、Meta http-equiv类和Meta name类。Meta name类允许自定义，是功能最强、自由度最高的。文章还详细介绍了移动端相关的meta元素，如name="viewport"、UC移动浏览器和QQ移动浏览器等。最后，文章还介绍了其他一些常用的meta元素，如SEO相关的meta元素、referrer相关的meta元素等。
-  - - meta
-    - name: keywords
-      content: meta,meta标签,元数据,SEO,meta 标签的作用,meta 标签的用途,meta 标签的最佳实践
+author: 王志杰
+date: 2024-09-22
+keywords: meta,meta标签,元数据,SEO,meta 标签的作用,meta 标签的用途,meta 标签的最佳实践
+description: 本文详细介绍了HTML中的<meta>标签及其作用。<meta>标签主要用于设置当前网页的元数据，如网页描述、作者、针对搜索引擎的关键字等等。<meta>元素有四个常用属性：name、http-equiv、content和charset。其中，name和http-equiv必须搭配content使用，http-equiv主要用于控制浏览器行为，charset用于设置文档的字符编码。文章还介绍了meta元素的分类，包括Meta charset类、Meta http-equiv类和Meta name类。Meta name类允许自定义，是功能最强、自由度最高的。文章还详细介绍了移动端相关的meta元素，如name="viewport"、UC移动浏览器和QQ移动浏览器等。最后，文章还介绍了其他一些常用的meta元素，如SEO相关的meta元素、referrer相关的meta元素等。
 ---
 
 # 认识 \<meta\> 标签
