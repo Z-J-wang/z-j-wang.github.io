@@ -1,11 +1,8 @@
 ﻿---
-head:
-  - - meta
-    - name: description
-      content: 本文详细介绍了meta元素在SEO中的重要性，并详细解释了如何使用meta元素来设置网页的元数据。这些元数据包括网页标题、网页摘要、关键字、网页作者以及抓取工具的行为控制。此外，还提到了不同的搜索引擎可能会为爬虫机器人制定专门的meta元素。总的来说，这段代码是为了帮助搜索引擎更好地理解网页内容，从而提高网页在搜索引擎结果页中的显示效果和排名。
-  - - meta
-    - name: keywords
-      content: meta,SEO,meta与SEO,meta与SEO优化,meta标签,meta标签优化,meta标签SEO,meta标签SEO优化
+author: 王志杰
+date: 2024-09-22
+keywords: meta,SEO,meta与SEO,meta与SEO优化,meta标签,meta标签优化,meta标签SEO,meta标签SEO优化
+description: 本文详细介绍了meta元素在SEO中的重要性，并详细解释了如何使用meta元素来设置网页的元数据。这些元数据包括网页标题、网页摘要、关键字、网页作者以及抓取工具的行为控制。此外，还提到了不同的搜索引擎可能会为爬虫机器人制定专门的meta元素。总的来说，这段代码是为了帮助搜索引擎更好地理解网页内容，从而提高网页在搜索引擎结果页中的显示效果和排名。
 ---
 
 # 第四章：meta 与 SEO

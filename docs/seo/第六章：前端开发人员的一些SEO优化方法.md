@@ -1,11 +1,8 @@
 ---
-head:
-  - - meta
-    - name: description
-      content: SEO 工作并不是专属于专业的从业人员。身为前端开发，我们一样可以在日常的开发过程中兼顾一些代码层面上的 SEO 优化。 本文将列举一些前端常用 SEO 方法。
-  - - meta
-    - name: keywords
-      content: SEO,前端开发,SEO优化,前端开发人员,SEO方法,title,keywords,description,a标签优化
+author: 王志杰
+date: 2024-09-22
+keywords: SEO,前端开发,SEO优化,前端开发人员,SEO方法,title,keywords,description,a标签优化
+description: SEO 工作并不是专属于专业的从业人员。身为前端开发，我们一样可以在日常的开发过程中兼顾一些代码层面上的 SEO 优化。 本文将列举一些前端常用 SEO 方法。
 ---
 
 # 第六章：前端开发人员的一些 SEO 优化方法

@@ -1,11 +1,7 @@
 ---
-head:
-  - - meta
-    - name: description
-      content: 前端与 SEO 专栏，深入探讨 SEO 的概念、相关知识和在前端项目中如何实现 SEO 优化。
-  - - meta
-    - name: keywords
-      content: SEO, 前端优化, 搜索引擎优化, SEO 专栏, SEO 策略, SEO 工具, SEO 技巧
+author: 王志杰
+keywords: SEO, 前端优化, 搜索引擎优化, SEO 专栏, SEO 策略, SEO 工具, SEO 技巧
+description: 前端与 SEO 专栏，深入探讨 SEO 的概念、相关知识和在前端项目中如何实现 SEO 优化。
 ---
 
 <script setup>
