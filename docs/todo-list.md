@@ -8,3 +8,4 @@
 - [ ] 添加 about 页面
 - [ ] 添加 contact 页面
 - [ ] 《认识 meta 标签》完善
+- [ ] 《readme》完善
