@@ -1,6 +1,6 @@
 # 浅谈CSS Modules以及CSS Modules在Vue.js上的使用
 
-### 什么是CSS Modules?
+## 什么是CSS Modules?
 
 官方文档：
 
