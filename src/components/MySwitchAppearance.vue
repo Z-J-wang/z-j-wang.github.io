@@ -14,7 +14,7 @@ const onClick = (event) => {
 
   // 为不支持此 API 的浏览器提供回退方案：
   if (!document?.startViewTransition) {
-    toggleAppearance(event)
+    // toggleAppearance(event)
     return
   }
 
@@ -24,31 +24,28 @@ const onClick = (event) => {
   // 获取到最远角的距离
   const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
 
+  let keyframes = [{ clipPath: `circle(0 at ${x}px ${y}px)` }, { clipPath: `circle(${endRadius}px at ${x}px ${y}px)` }]
+
+  if (!isDark.value) keyframes = keyframes.reverse()
+
   // 开始一次视图过渡：
   const transition = document.startViewTransition(() => {
-    toggleAppearance(event)
+    if (isDark.value) {
+      toggleAppearance(event)
+    } else {
+      setTimeout(() => {
+        toggleAppearance(event)
+      }, 300)
+    }
   })
 
   // 等待伪元素创建完成：
   transition.ready.then(() => {
     // 新视图的根元素动画
-    document.documentElement.animate(
-      [
-        {
-          clipPath: `circle(0 at ${x}px ${y}px)`,
-          backgroundColor: 'black'
-        },
-        {
-          clipPath: `circle(${endRadius}px at ${x}px ${y}px)`,
-          backgroundColor: 'black'
-        }
-      ],
-      {
-        duration: 50000,
-        easing: 'ease-in',
-        pseudoElement: '::view-transition-new(root)'
-      }
-    )
+    document.documentElement.animate(keyframes, {
+      duration: 300,
+      pseudoElement: '::view-transition-new(root)'
+    })
   })
 }
 
@@ -92,9 +89,11 @@ watchPostEffect(() => {
   /* rtl:ignore */
   transform: translateX(18px);
 }
+</style>
 
+<style>
 /* stylelint-disable-next-line selector-pseudo-element-no-unknown */
-::view-transition-new(*) {
-  background-color: black !important;
+::view-transition-group(root) {
+  background-color: #1b1b1f !important;
 }
 </style>
