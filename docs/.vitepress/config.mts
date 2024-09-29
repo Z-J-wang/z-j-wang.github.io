@@ -44,6 +44,40 @@ export default withMermaid({
       '本博客专注于分享 Web 开发以及相关的领域的知识。无论您是行业专家还是初学者，相信这里都能找到有价值的内容。期待与您相互学习、共同进步。',
     lang: 'zh-CN',
     lastUpdated: true, // 默认开启markdown最后更新时间
+    appearance: {
+      onChanged: (isDark, defaultHandler, mode) => {
+        let lastClick = window.event as MouseEvent
+        // 为不支持此 API 的浏览器提供回退方案：
+        if (!document?.startViewTransition) return defaultHandler(mode)
+
+        // 获取点击位置，或者回退到屏幕中间
+        const x = lastClick?.clientX ?? innerWidth / 2
+        const y = lastClick?.clientY ?? innerHeight / 2
+        // 获取到最远角的距离
+        const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
+
+        let keyframes = [{ clipPath: `circle(0 at ${x}px ${y}px)` }, { clipPath: `circle(${endRadius}px at ${x}px ${y}px)` }]
+        if (isDark) keyframes = keyframes.reverse()
+
+        // 开始一次视图过渡：
+        const transition = document.startViewTransition(() => {
+          if (!isDark) {
+            defaultHandler(mode)
+          } else {
+            setTimeout(() => defaultHandler(mode), 300)
+          }
+        })
+
+        // 等待伪元素创建完成：
+        transition.ready.then(() => {
+          // 新视图的根元素动画
+          document.documentElement.animate(keyframes, {
+            duration: 300,
+            pseudoElement: '::view-transition-new(root)'
+          })
+        })
+      },
+    }, // 默认开启暗黑模式
     head: [
       ['link', { rel: 'icon', href: '/favicon.ico' }] // 设置网站图标
     ],
@@ -61,7 +95,10 @@ export default withMermaid({
         { text: '首页', link: '/' },
         { text: '杂谈', link: '/tittle-tattle' },
         { text: '前端与 SEO', link: '/seo' },
-        { text: 'TODO', link: '/todo-list' }
+        { text: 'TODO', link: '/todo-list' },
+        {
+          component: 'MySwitchAppearance'
+        }
       ],
       sidebar: {
         '/tittle-tattle/': [

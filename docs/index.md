@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: CSDN
       link: https://blog.csdn.net/weixin_44869002?spm=1000.2115.3001.5343
+    - theme: alt
+      text: GitHub
+      link: https://github.com/Z-J-wang/z-j-wang.github.io
 
 features:
   - title: 杂谈专栏
@@ -26,3 +29,10 @@ features:
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
+
+<style>
+/* stylelint-disable-next-line selector-pseudo-element-no-unknown */
+::view-transition-group(root) {
+  background-color: #1b1b1f !important;
+}
+</style>
