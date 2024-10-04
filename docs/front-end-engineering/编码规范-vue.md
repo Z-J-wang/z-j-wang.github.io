@@ -1,8 +1,19 @@
-## 前言
+---
+author: 王志杰
+date: 2024-10-04
+keywords: Vue 编码规范
+description: 编写 Vue 代码时，我们需要遵循一定的规范，以保证代码的可读性、可维护性和一致性。本文将介绍一些常见的 Vue 编码规范，帮助大家编写出高质量的 Vue 代码。
+---
 
-> 本规范是基于 Vue 官方文档所给出的[《风格指南》](https://cn.vuejs.org/v2/style-guide/)所编写的。在其基础上做了细致的规定。
+# Vue 编码规范
 
-## 1. 采用 2 空格缩进
+编写 Vue 代码时，我们需要遵循一定的规范，以保证代码的可读性、可维护性和一致性。本文将介绍一些常见的 Vue 编码规范，帮助大家编写出高质量的 Vue 代码。
+
+> 本规范是基于 Vue 官方文档所给出的[《风格指南》](https://v2.cn.vuejs.org/v2/style-guide/)所编写的。在其基础上做了细致的规定。
+
+## 细则
+
+### 1. 采用 2 空格缩进
 
 采用 2 空格来进行代码缩进，而不是使用 tab 来进行缩进代码。除非你在编译器做了一下设定：
 
@@ -19,7 +30,7 @@
 "editor.insertSpaces": true
 ```
 
-## 2. 换行
+### 2. 换行
 
 **使用 UNIX 风格的换行符 (\n)，同时在每个文件的结尾添加一个换行符。 禁止使用 Windows 风格的换行符 (\r\n) 。这是为了修复项目部署到服务器可能出现的不兼容。**
 
@@ -28,15 +39,15 @@
 "files.eol": "\n"
 ```
 
-## 3. 单行代码长度
+### 3. 单行代码长度
 
 **无论 HTML 代码还是 JavaScript 代码，一行代码长度都不应该超过**80**个字符。如果超过应该手动换行。**
 
-## 4. Vue 指令统一使用缩写
+### 4. Vue 指令统一使用缩写
 
 **用 `:` 表示 `v-bind:`、用 `@` 表示 `v-on:` 和用 `#` 表示 `v-slot:`**
 
-## 5. [组件/实例的选项的顺序推荐](https://cn.vuejs.org/v2/style-guide/#组件-实例的选项的顺序推荐)
+### 5. [组件/实例的选项的顺序推荐](https://v2.cn.vuejs.org/v2/style-guide/#组件-实例的选项的顺序推荐)
 
 **组件/实例的选项应该有统一的顺序。**
 
@@ -85,7 +96,7 @@
     - `template`/`render`
     - `renderError`
 
-## 6. 多个 attribute 的元素应该分多行撰写，每个 attribute 一行
+### 6. 多个 attribute 的元素应该分多行撰写，每个 attribute 一行
 
 **若 HTML 元素的 `attribute` 数量大于 1，则应该将 `attribute ` 分多行撰写，每个 `attribute` 一行。**
 
@@ -97,11 +108,9 @@
 >新增一笔</el-button>
 ```
 
-## 7. 元素 attribute 的顺序
+### 7. 元素 attribute 的顺序
 
-> 该部分的参考了《风格指南》中的 “[元素 attribute 的顺序](https://cn.vuejs.org/v2/style-guide/#元素-attribute-的顺序推荐)” 。将`attribute `分为 10 个类别。
-
-#### 类别间的优先级
+> 该部分的参考了《风格指南》中的 “[元素 attribute 的顺序](https://v2.cn.vuejs.org/v2/style-guide/#元素-attribute-的顺序推荐)” 。将`attribute `分为 10 个类别。
 
 1. **定义** (提供组件的选项)
    - `is`
@@ -130,13 +139,14 @@
     - `v-html`
     - `v-text`
 
-#### 说明
+> #### 说明
+>
+> - 同类型的 attribute 由短到长排序；
+> - 第八点的 attribute 非动态绑定属性全部排在动态绑定属性之前，再由短到长排序；
+> - 有些第三方组件的`event`是通过`attribute`来绑定的。这类`attribute`排在第八点最后；
+>
 
-2. 同类型的 attribute 由短到长排序；
-3. 第八点的 attribute 非动态绑定属性全部排在动态绑定属性之前，再由短到长排序；
-4. 有些第三方组件的`event`是通过`attribute`来绑定的。这类`attribute`排在第八点最后；
-
-## 8. 事件
+### 8. 事件
 
 1. HTML 标签（Tag）绑定的`event`间的顺序根据`event`名的字母顺序来排列；
 
@@ -154,15 +164,70 @@
      <input type="number" @change="handleChange(id)" />
      ```
 
-## 9. 组件
 
-###### 只要有能够拼接文件的构建系统，就把每个组件单独分成文件。
 
-###### [组件名应以多个单词组成](https://cn.vuejs.org/v2/style-guide/#组件名为多个单词必要)
+### 9. 把组件代码抽离成独立的文件或者目录
+
+一个组件对应一个`.vue`，把组件相关代码提取成独立的文件，以便于查阅与维护。
+
+如果`.vue`文件的代码量较大，不利于维护与查阅，则应将`<script></script>`和`<style></style>`中的代码抽离成单独的文件。
+
+::: details 分离前
+```vue
+<!-- MyComponent.vue -->
+<script>
+export default {
+   name: 'MyComponent',
+}
+</script>
+
+<template>
+   <div id="MyComponent"></div>
+</template>
+
+<style>
+#MyComponent{
+   
+}
+</style>
+```
+:::
+
+::: details 分离后
+
+```JavaScript
+// MyComponent/script.js
+export default {
+   name: 'MyComponent',
+}
+```
+
+```css
+/* MyComponent/style.css */
+#MyComponent{
+   
+}
+```
+
+```vue
+<!-- MyComponent/index.vue -->
+<script src="./script.js"></script>
+
+<template>
+   <div id="MyComponent"></div>
+</template>
+
+<style src="./style.css"></style>
+```
+:::
+
+### 10. 组件命名
+
+#### 组件名应以多个单词组成
 
 **组件名应该始终是多个单词的，而且采用 PascalCase 命名规则。根组件 `App` 以及 `<transition>`、`<component>` 之类的 Vue 内置组件除外。**
 
-> 这样做可以避免跟现有的以及未来的 HTML 元素[相冲突](https://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
+这样做可以避免跟现有的以及未来的 HTML 元素[相冲突](https://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
 
 <font color="#ff0000">注意：尽量不要使用单词的缩写。</font>
 
@@ -181,26 +246,29 @@ export default {
 Vue.component('todo-item', {
   // ...
 })
+
 export default {
   name: 'TodoItem',
   // ...
 }
 ```
 
-###### [组件名中的单词顺序](https://cn.vuejs.org/v2/style-guide/#组件名中的单词顺序强烈推荐)
+#### 组件名中的单词顺序
 
-**组件名应该以高级别的 (通常是一般化描述的) 单词开头，以描述性的修饰词结尾。**
+组件名应该以高级别的 (通常是一般化描述的) 单词开头，以描述性的修饰词结尾。
 
-###### **[单文件组件](https://cn.vuejs.org/v2/guide/single-file-components.html)的文件名命名统一单词大写开头 (PascalCase)**
+详见：[风格指南 — Vue.js (vuejs.org)](https://v2.cn.vuejs.org/v2/style-guide/#组件名中的单词顺序强烈推荐)
 
-**单文件组件的文件名命名统一单词大写开头，而且要与组件名一致。**
+####  单文件组件的文件名命名统一单词大写开头 (PascalCase)
+
+单文件组件的文件名命名统一单词大写开头，而且要与组件名一致。
 
 ```js
 components/
 |- MyComponent.vue
 ```
 
-###### [基础组件命名](https://cn.vuejs.org/v2/style-guide/#%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
+#### 基础组件命名
 
 **应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以特定前缀`Base`开头。**
 
@@ -211,7 +279,9 @@ components/
 |- BaseIcon.vue
 ```
 
-###### [单例组件命名](https://cn.vuejs.org/v2/style-guide/#单例组件名强烈推荐)
+详见：[风格指南 — Vue.js (vuejs.org)](https://v2.cn.vuejs.org/v2/style-guide/#基础组件名强烈推荐)
+
+#### 单例组件命名
 
 **只应该拥有单个活跃实例的组件应该以 `The` 前缀命名，以示其唯一性。**
 
@@ -225,13 +295,17 @@ components/
 |- TheSidebar.vue
 ```
 
-###### [紧密耦合的组件命名](https://cn.vuejs.org/v2/style-guide/#紧密耦合的组件名强烈推荐)
+详见：[风格指南 — Vue.js (vuejs.org)](https://v2.cn.vuejs.org/v2/style-guide/#单例组件名强烈推荐)
+
+#### 紧密耦合的组件命名
 
 **和父组件紧密耦合的子组件应该以父组件名作为前缀命名。**
 
 > 如果一个组件只在某个父组件的场景下有意义，这层关系应该体现在其名字上。因为编辑器通常会按字母顺序组织文件，所以这样做可以把相关联的文件排在一起。
 
-###### 组件的使用
+详见：[风格指南 — Vue.js (vuejs.org)](https://v2.cn.vuejs.org/v2/style-guide/#紧密耦合的组件名强烈推荐)
+
+### 10. 组件的使用
 
 - 接受导入组件的变量命名应该跟组件名一致
 
@@ -247,60 +321,53 @@ components/
   },
   ```
 
-- [模板中的组件名写法](https://cn.vuejs.org/v2/style-guide/#%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
+### 11. 组件的 `data` 必须是一个函数
 
-  **模板中的组件名统一采用 kebab-case。**
+当在组件中使用 `data` property 的时候 (除了 `new Vue` 外的任何地方)，它的值必须是返回一个对象的函数。
 
-  ```html
-  <my-component></my-component>
-  ```
+> **详解**：
+>
+> 当 `data` 的值是一个对象时，它会在这个组件的所有实例之间共享。想象一下，假如一个 `TodoList` 组件的数据是这样的：
+>
+> ```js
+> data: {
+>   listTitle: '',
+>   todos: []
+> }
+> ```
+>
+> 我们可能希望重用这个组件，允许用户维护多个列表 (比如分为购物、心愿单、日常事务等)。这时就会产生问题。因为每个组件的实例都引用了相同的数据对象，更改其中一个列表的标题就会改变其它每一个列表的标题。增删改一个待办事项的时候也是如此。
+>
+> 取而代之的是，我们希望每个组件实例都管理其自己的数据。为了做到这一点，每个实例必须生成一个独立的数据对象。在 JavaScript 中，在一个函数中返回这个对象就可以了：
+>
+> ```js
+> data: function () {
+>   return {
+>     listTitle: '',
+>     todos: []
+>   }
+> }
+> ```
 
-## 10. [组件的 `data` 必须是一个函数](https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6%E5%90%8D%E4%B8%BA%E5%A4%9A%E4%B8%AA%E5%8D%95%E8%AF%8D%E5%BF%85%E8%A6%81)
+### 12. Prop
 
-> 当在组件中使用 `data` property 的时候 (除了 `new Vue` 外的任何地方)，它的值必须是返回一个对象的函数。
+#### 1. Prop 命名
 
-#### 详解：
+在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 [JSX](https://v2.cn.vuejs.org/v2/guide/render-function.html#JSX) 中引用时应始终使用 kebab-case。
 
-当 `data` 的值是一个对象时，它会在这个组件的所有实例之间共享。想象一下，假如一个 `TodoList` 组件的数据是这样的：
-
-```js
-data: {
-  listTitle: '',
-  todos: []
-}
-```
-
-我们可能希望重用这个组件，允许用户维护多个列表 (比如分为购物、心愿单、日常事务等)。这时就会产生问题。因为每个组件的实例都引用了相同的数据对象，更改其中一个列表的标题就会改变其它每一个列表的标题。增删改一个待办事项的时候也是如此。
-
-取而代之的是，我们希望每个组件实例都管理其自己的数据。为了做到这一点，每个实例必须生成一个独立的数据对象。在 JavaScript 中，在一个函数中返回这个对象就可以了：
-
-```js
-data: function () {
-  return {
-    listTitle: '',
-    todos: []
-  }
-}
-```
-
-## 11. Prop
-
-#### Prop 命名
-
-**在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 [JSX](https://cn.vuejs.org/v2/guide/render-function.html#JSX) 中应该始终使用 kebab-case。**
-
-```js
+```Vue
 props: {
   greetingText: String
 }
-;<WelcomeMessage greeting-text="hi" />
+
+<WelcomeMessage greeting-text="hi" />
 ```
 
-#### Prop 定义应该尽量详细
+#### 2. Prop 定义应该尽量详细
 
 **prop 的定义应该尽量详细，至少需要指定其类型。**
 
-> #### 细致的 [prop 定义](https://cn.vuejs.org/v2/guide/components-props.html#Prop-验证)有两个好处：
+> #### 细致的 [prop 定义](https://v2.cn.vuejs.org/v2/style-guide/components-props.html#Prop-验证)有两个好处：
 >
 > - 它们写明了组件的 API，所以很容易看懂组件的用法；
 > - 在开发环境下，如果向一个组件提供格式不正确的 prop，Vue 将会告警，以帮助你捕获潜在的错误来源。
@@ -331,13 +398,15 @@ props: {
 > }
 > ```
 
-## 12. [为 `v-for` 设置键值必要](https://cn.vuejs.org/v2/style-guide/#为-v-for-设置键值必要)
+### 13. 为 `v-for` 设置键值必要
 
 > 使用`v-for`是，都应该为其添加`key`。
 
-在组件上*总是*必须用 `key` 配合 `v-for`，以便维护内部组件及其子树的状态。甚至在元素上维护可预测的行为，比如动画中的[对象固化 (object constancy)](https://bost.ocks.org/mike/constancy/)，也是一种好的做法。
+在组件上总是必须用 `key` 配合 `v-for`，以便维护内部组件及其子树的状态。甚至在元素上维护可预测的行为，比如动画中的[对象固化 (object constancy)](https://bost.ocks.org/mike/constancy/)，也是一种好的做法。
 
-## 13. [避免 `v-if` 和 `v-for` 用在一起必要](https://cn.vuejs.org/v2/style-guide/#避免-v-if-和-v-for-用在一起必要)
+详见：[风格指南 — Vue.js (vuejs.org)](https://v2.cn.vuejs.org/v2/style-guide/#为-v-for-设置键值必要)
+
+### 14. 避免 `v-if` 和 `v-for` 用在一起必要
 
 > 永远不要把 `v-if` 和 `v-for` 同时用在同一个元素上。
 
@@ -346,85 +415,106 @@ props: {
 - 为了过滤一个列表中的项目 (比如 `v-for="user in users" v-if="user.isActive"`)。在这种情形下，请将 `users` 替换为一个计算属性 (比如 `activeUsers`)，让其返回过滤后的列表。
 - 为了避免渲染本应该被隐藏的列表 (比如 `v-for="user in users" v-if="shouldShowUsers"`)。这种情形下，请将 `v-if` 移动至容器元素上 (比如 `ul`、`ol`)。
 
-### [为组件样式设置作用域必要](https://cn.vuejs.org/v2/style-guide/#为组件样式设置作用域必要)
+详见：[风格指南 — Vue.js (vuejs.org)](https://v2.cn.vuejs.org/v2/style-guide/#避免-v-if-和-v-for-用在一起必要)
+
+### 15. 为组件样式设置作用域
 
 **对于应用来说，顶级 `App` 组件和布局组件中的样式可以是全局的，但是其它所有组件都应该是有作用域的。**
 
-这条规则只和[单文件组件](https://cn.vuejs.org/v2/guide/single-file-components.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/zh-cn/features/scoped-css.html)。设置作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/zh-cn/features/css-modules.html)，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
+这条规则只和[单文件组件](https://v2.cn.vuejs.org/v2/guide/single-file-components.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/zh-cn/features/scoped-css.html)。设置作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/zh-cn/features/css-modules.html)，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
 
 **不管怎样，对于组件库，我们应该更倾向于选用基于 class 的策略而不是 `scoped` attribute。**
 
 这让覆写内部样式更容易：使用了常人可理解的 class 名称且没有太高的选择器优先级，而且不太会导致冲突。
 
-### 建议：
+### 16. 父子组件通讯
 
----
+应该优先通过 `prop` 和 `event` 进行父子组件之间的通信，而不是 `this.$parent` 或变更 `prop`。
 
-##### 组件/实例选项中的代码块间应该空一行
-
-> 当你的组件开始觉得密集或难以阅读时，在多个 property 之间添加空行可以让其变得容易。在一些诸如 Vim 的编辑器里，这样格式化后的选项还能通过键盘被快速导航。
->
-> 参考了《风格指南》中的 [组件/实例选项中的空行](https://cn.vuejs.org/v2/style-guide/#组件-实例选项中的空行推荐)。
-
-###### 规则
-
-- 代码块定义：被`{}`包裹的代码就是一个代码块；
-- 使用规则：
-  - 单行代码块后不需要空一行；
-  - 多行代码块且后面跟着**同级**其他代码需要空一行；
-
-示例：
-
+::: details 查看反例
 ```js
-props: {
-  value: {},	// 单行代码块后不需要空一行
-  focused: {	// 多行代码块且后面跟着同级其他代码需要空一行
-    type: Boolean,
-    default: false
+Vue.component('TodoItem', {
+  props: {
+    todo: {
+      type: Object,
+      required: true
+    }
   },
-
-  label: String,	// 非代码块，不需要空行
-  icon: String
-},
-
-computed: {
-  formattedValue: function () {
-    // ...
-  },
-
-  inputClasses: function () {	// 多行代码块，但是后面没有紧跟着同级其他代码，不需要空行
-    // ...
-  }
-}
+  template: '<input v-model="todo.text">'
+})
 ```
+---
+```vue
+Vue.component('TodoItem', {
+  props: {
+    todo: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    removeTodo () {
+      var vm = this
+      vm.$parent.todos = vm.$parent.todos.filter(function (todo) {
+        return todo.id !== vm.todo.id
+      })
+    }
+  },
+  template: `
+    <span>
+      {{ todo.text }}
+      <button @click="removeTodo">
+        X
+      </button>
+    </span>
+  `
+})
+```
+:::
 
-###### 说明
+::: details 查看正例
+```js
+Vue.component('TodoItem', {
+  props: {
+    todo: {
+      type: Object,
+      required: true
+    }
+  },
+  template: `
+    <input
+      :value="todo.text"
+      @input="$emit('input', $event.target.value)"
+    >
+  `
+})
+```
+---
+```vue
+Vue.component('TodoItem', {
+  props: {
+    todo: {
+      type: Object,
+      required: true
+    }
+  },
+  template: `
+    <span>
+      {{ todo.text }}
+      <button @click="$emit('delete')">
+        X
+      </button>
+    </span>
+  `
+})
+```
+:::
 
-1. 如果代码不空行也易于阅读和导航，可以不遵循该规则；
-
-2. 对于数组元素是对象的情况，不需要遵守该规则；
-
-   ```
-   group: [
-       {
-           groupTitle: "分组一",
-       },
-       {
-           groupTitle: "分组2",
-       },
-       {
-           groupTitle: "",
-       }
-   ]
-   ```
-
-## 14. 代码注释
-
-#### Vue 组件相关代码注释
+### 17. 代码注释
 
 1. data 和 props 的每个属性都需要编写注释说明用途。这样便于后期快速理解查找；
 2. 不需要对 Vue 的 option 进行注释（如生命周期的钩子函数、data 、watch、methods 等），因为这些都是大家都熟知的。注意，option 里面的代码还是需要进行必要的注释的。
 
 ## 参考文档
 
-[风格指南]: https://cn.vuejs.org/v2/style-guide/
+- [风格指南](https://v2.cn.vuejs.org/v2/style-guide/)
