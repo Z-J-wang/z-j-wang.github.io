@@ -49,6 +49,7 @@ export default withMermaid({
         try {
           let lastClick = window.event as MouseEvent
           // 为不支持此 API 的浏览器提供回退方案：
+          // @ts-ignore
           if (!document?.startViewTransition) return defaultHandler(mode)
 
           // 获取点击位置，或者回退到屏幕中间
@@ -64,6 +65,7 @@ export default withMermaid({
           if (isDark) keyframes = keyframes.reverse()
 
           // 开始一次视图过渡：
+          // @ts-ignore
           const transition = document.startViewTransition(() => {
             if (!isDark) {
               defaultHandler(mode)
@@ -103,10 +105,8 @@ export default withMermaid({
         { text: '首页', link: '/' },
         { text: '杂谈', link: '/tittle-tattle' },
         { text: '前端与 SEO', link: '/seo' },
+        { text: '前端工程化', link: '/front-end-engineering' },
         { text: 'TODO', link: '/todo-list' },
-        {
-          component: 'MySwitchAppearance'
-        }
       ],
       sidebar: {
         '/tittle-tattle/': [
@@ -134,6 +134,13 @@ export default withMermaid({
               ],
               '/seo'
             )
+          }
+        ],
+        '/front-end-engineering/': [
+          {
+            text: '前端工程化',
+            collapsed: false,
+            items: createSideBar([], '/front-end-engineering')
           }
         ]
       },

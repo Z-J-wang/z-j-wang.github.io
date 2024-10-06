@@ -26,8 +26,10 @@ features:
     details: 深入探讨 SEO 的概念、相关知识和在前端项目中的优化方法。
     link: /seo
     linkText: Learn more
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 前端工程化专栏（完善中）
+    details: 本专栏主要介绍前端工程化相关的内容，包括但不限于模块化、组件化、自动化构建、代码规范、性能优化等。
+    link: /front-end-engineering
+    linkText: Learn more
 ---
 
 <style>
