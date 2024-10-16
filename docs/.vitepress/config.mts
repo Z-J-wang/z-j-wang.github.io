@@ -102,15 +102,13 @@ export default withMermaid({
       [
         'script',
         {},
-        `<script>
-        var _hmt = _hmt || [];
+        `var _hmt = _hmt || [];
         (function() {
           var hm = document.createElement("script");
           hm.src = "https://hm.baidu.com/hm.js?aa81c44a00bef60315b1c9b969e03ddf";
           var s = document.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(hm, s);
-        })();
-        </script>`
+        })();`
       ]
     ],
     markdown: {
