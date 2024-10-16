@@ -90,10 +90,7 @@ export default withMermaid({
     }, // 默认开启暗黑模式
     head: [
       ['link', { rel: 'icon', href: '/favicon.ico' }], // 设置网站图标
-      [
-        'script',
-        { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-JFDHHFD1SK' }
-      ],
+      ['script', { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-JFDHHFD1SK' }],
       [
         'script',
         {},
@@ -103,17 +100,17 @@ export default withMermaid({
         gtag('config', 'G-JFDHHFD1SK');`
       ],
       [
-       'script',
+        'script',
         {},
         `<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?aa81c44a00bef60315b1c9b969e03ddf";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>`
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?aa81c44a00bef60315b1c9b969e03ddf";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>`
       ]
     ],
     markdown: {
@@ -131,7 +128,7 @@ var _hmt = _hmt || [];
         { text: '杂谈', link: '/tittle-tattle' },
         { text: '前端与 SEO', link: '/seo' },
         { text: '前端工程化', link: '/front-end-engineering' },
-        { text: 'TODO', link: '/todo-list' },
+        { text: 'TODO', link: '/todo-list' }
       ],
       sidebar: {
         '/tittle-tattle/': [
