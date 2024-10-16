@@ -89,7 +89,20 @@ export default withMermaid({
       }
     }, // 默认开启暗黑模式
     head: [
-      ['link', { rel: 'icon', href: '/favicon.ico' }] // 设置网站图标
+      ['link', { rel: 'icon', href: '/favicon.ico' }], // 设置网站图标
+      [
+        'script',
+        { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-JFDHHFD1SK' }
+      ],
+
+      [
+        'script',
+        {},
+        `window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JFDHHFD1SK');`
+      ]
     ],
     markdown: {
       lineNumbers: true, // 设置markdown代码块行号
