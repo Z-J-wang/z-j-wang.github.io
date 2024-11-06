@@ -59,6 +59,9 @@ export default withMermaid({
     }, // 默认开启暗黑模式
     head: headConfig,
     markdown: {
+      image: {
+        lazyLoading: true  // 启用图片懒加载
+      },
       lineNumbers: true, // 设置markdown代码块行号
       config: (md) => {
         md.use(tasklist) // 引入任务列表支持的插件

@@ -24,6 +24,10 @@ const createSideBar = (customSideBars: SideBar[], path: string, options?: any): 
         let { text, link } = item.items[0]
         link = path + '/' + link
 
+        // 删除子目录的index.md文件名中的 'Index' 后缀
+        // 如：/path/[目录名]/index.md
+        text = text.replace(/ Index$/, '')
+
         // 排除自定义侧边栏中的链接
         if (!customSideBars.some((customItem) => customItem.link === link)) {
           sideBars.push({ text, link })
