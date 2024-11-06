@@ -56,7 +56,7 @@
 
 控制台输出：
 
-![](<./images/$children和$refs对比(2.x).jpg>)
+![](./images/1.jpeg)
 
 结论：
 
@@ -64,4 +64,4 @@
 
 上面例子在 Vue 3.x 运行的结果：
 
-![](<./images/$children和$refs对比(3.x).jpg>)
+![](./images/2.jpeg)
