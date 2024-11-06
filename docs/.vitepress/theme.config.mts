@@ -76,6 +76,28 @@ const themeConfig: DefaultTheme.Config = {
         )
       }
     ],
+    '/webpack-vue-cli4/': [
+      {
+        text: 'vue-cli4.0 webpack配置说明',
+        collapsed: false,
+        items: createSideBar(
+          [
+            { text: '第一篇：Vue CLI 4.0 webpack配置专栏说明', link: '/webpack-vue-cli4/publicPath' },
+            { text: '第二篇：Vue CLI4.0 webpack配置属性——publicPath', link: '/webpack-vue-cli4/publicPath' },
+            { text: '第三篇：Vue CLI4.0 webpack配置属性——outputDir、assetsDir、indexPath', link: '/webpack-vue-cli4/outputDir&assetsDir&indexPath' },
+            { text: '第四篇：Vue CLI4.0 webpack配置属性——filenameHashing', link: '/webpack-vue-cli4/filenameHashing' },
+            { text: '第五篇：Vue CLI4.0 webpack配置属性——lintOnSave、configureWebpack、chainWebpack、parallel', link: '/webpack-vue-cli4/lintOnSave&configureWebpack&chainWebpack&parallel' },
+            { text: '第六篇：Vue CLI4.0 webpack配置属性——crossorigin', link: '/webpack-vue-cli4/crossorigin' },
+            { text: '第七篇：Vue CLI4.0 webpack配置属性——productionSourceMap', link: '/webpack-vue-cli4/productionSourceMap' },
+            { text: '第八篇：Vue CLI4.0 webpack配置属性——css.sourceMap', link: '/webpack-vue-cli4/css.sourceMap' },
+            { text: '第九篇：Vue CLI4.0 webpack配置属性——css.extract', link: '/webpack-vue-cli4/css.extract' },
+            { text: '第十篇：Vue CLI4.0 webpack配置属性——css.requireModuleExtension、css.loaderOptions', link: '/webpack-vue-cli4/css.requireModuleExtension&css.loaderOptions' },
+            { text: '第十一篇：Vue CLI4.0 webpack配置属性——devServer', link: '/webpack-vue-cli4/devServer' },
+            { text: '第十二篇：Vue CLI4.0 webpack配置属性——devServer.proxy', link: '/webpack-vue-cli4/devServer.proxy' },
+            { text: '范例篇：Vue CLI 4.0 关于 webpack 基本配置范例', link: '/webpack-vue-cli4/example' },
+          ], '/webpack-vue-cli4')
+      }
+    ],
     '/front-end-engineering/': [
       {
         text: '前端工程化',
