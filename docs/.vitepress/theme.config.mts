@@ -6,6 +6,7 @@ const themeConfig: DefaultTheme.Config = {
   // https://vitepress.dev/reference/default-theme-config
   nav: [
     { text: '首页', link: '/' },
+    { text: '专栏', link: '/special-column' },
     { text: '杂谈', link: '/tittle-tattle' },
     { text: '前端与 SEO', link: '/seo' },
     { text: '前端工程化', link: '/front-end-engineering' },

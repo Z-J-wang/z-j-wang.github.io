@@ -10,13 +10,13 @@
 
 ## Vue CLI webpack 的历史
 
-Vue CLI 有一个重要的节点，那就是 Vue CLI 3.0。在 Vue CLI 3.0 之前，webpack 的配置文件叫做`webpack.config.js`，用 Vue CLI 创建项目时会自动生成。这时的 Vue CLI 的 webpack 配置方法跟 webpack 官方配置方法一样。但是到了 Vue CLI 3.0 之后（包括 Vue CLI 3.0），配置文件就变成了`vue.config.js`。Vue CLI 不再默认生成 webpack 的配置文件了。想要手动配置 webpack，就需要用户在**项目根目录**手动去添加`vue.config.js`。而且，Vue 还对 webpack 配置做了自己的定制，增加了一些定制属性，配置的方法跟 webpack 官方提供的方法有了一些不同。
+Vue CLI 有一个重要的节点，那就是 Vue CLI 4.0。在 Vue CLI 4.0 之前，webpack 的配置文件叫做`webpack.config.js`，用 Vue CLI 创建项目时会自动生成。这时的 Vue CLI 的 webpack 配置方法跟 webpack 官方配置方法一样。但是到了 Vue CLI 4.0 之后（包括 Vue CLI 4.0），配置文件就变成了`vue.config.js`。Vue CLI 不再默认生成 webpack 的配置文件了。想要手动配置 webpack，就需要用户在**项目根目录**手动去添加`vue.config.js`。而且，Vue 还对 webpack 配置做了自己的定制，增加了一些定制属性，配置的方法跟 webpack 官方提供的方法有了一些不同。
 
 为了帮助大家能够快速了解 Vue CLI webpack，以及巩固我自己关于 Vue CLI 的知识点。我将以一个系列来讲解 Vue CLI webpack。期待与大家共进，相互学习。
 
 ## 本系列讲的是什么？
 
-本系列是一个 Vue CLI 4.0 webpack 的入门专栏，主要介绍的是 Vue CLI 4.0 webapck 基础内容，将会结合 Vue CLI 4.0 的官方文档，对 Vue CLI 4.0 的 webpack 的一些常用配置属性进行讲解，辅以配置属性使用代码案例。此外，还将提供一个完整的基础配置范例。
+本系列是一个 Vue CLI 4.0 webpack 的入门专栏，主要介绍的是 Vue CLI 4.0 webpack 基础内容，将会结合 Vue CLI 4.0 的官方文档，对 Vue CLI 4.0 的 webpack 的一些常用配置属性进行讲解，辅以配置属性使用代码案例。此外，还将提供一个完整的基础配置范例。
 
 ## 开始：创建`vue.config.js`
 
@@ -36,7 +36,7 @@ Vue CLI 有一个重要的节点，那就是 Vue CLI 3.0。在 Vue CLI 3.0 之�
 
 #### 小知识
 
-实际上，VueCLI 3.0 及以上构建的项目是有`webpack.config.js`的，只是被 Vue 隐藏起来了。里面是 VueCLI 的默认`webpack`配置。而`vue.config.js`是 vue 对`webpack.config.js`的扩展文件。最终编译时，`vue.config.js`会被合并到`webpack.config.js`中。
+实际上，VueCLI 4.0 及以上构建的项目是有`webpack.config.js`的，只是被 Vue 隐藏起来了。里面是 VueCLI 的默认`webpack`配置。而`vue.config.js`是 vue 对`webpack.config.js`的扩展文件。最终编译时，`vue.config.js`会被合并到`webpack.config.js`中。
 如果我们想查看最终编译的`webpack`配置，可进行一下操作：
 
 ```powershell
