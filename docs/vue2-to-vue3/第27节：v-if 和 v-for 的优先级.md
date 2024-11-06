@@ -1,0 +1,56 @@
+# 第 27 节：v-if 和 v-for 的优先级
+
+
+
+## 前言
+
+> 本笔记主要基于官方文档《[迁移策略——v-if 与 v-for 的优先级对比](https://v3.cn.vuejs.org/guide/migration/v-if-v-for.html)》汇总而来。如有理解出入，请以官方文档为主。
+>
+> #### 知识储备：
+>
+> 在阅读本文前，您最好熟知一下知识：
+>
+> `v-for` 和 `v-for` 是 Vue 中最常用的两个指令。开发过程中，难免有希望再同一个元素上同时使用两者的情况。然而，这种做法是 Vue 不推荐的用法。如，Vue 官方的《[风格指南](https://cn.vuejs.org/v2/style-guide/#避免-v-if-和-v-for-用在一起-必要)》就这样说到：
+>
+> > **永远不要把 `v-if` 和 `v-for` 同时用在同一个元素上。**
+> >
+> > 一般我们在两种常见的情况下会倾向于这样做：
+> >
+> > - 为了过滤一个列表中的项目 (比如 `v-for="user in users" v-if="user.isActive"`)。在这种情形下，请将 `users` 替换为一个计算属性 (比如 `activeUsers`)，让其返回过滤后的列表。
+> > - 为了避免渲染本应该被隐藏的列表 (比如 `v-for="user in users" v-if="shouldShowUsers"`)。这种情形下，请将 `v-if` 移动至容器元素上 (比如 `ul`、`ol`)。
+>
+> 尽管 Vue 不推荐这样使用，但是这种用法有时候 Vue 还是正常显示出来了。
+
+
+
+## 概述
+
+在 Vue 3.x，如果在一个元素上同时使用 `v-for` 和 `v-if`，`v-if` 的优先级高于 `v-for`。
+
+
+
+## Vue 2.x 对 `v-if` 和 `v-for` 的处理
+
+在 Vue 2.x 中， 如果在一个元素上同时使用 `v-for` 和 `v-if`，Vue 会优先渲染 `v-for`。
+
+因此，下面这个做法仍然是可以正常渲染的。
+
+```html
+<template>
+  <ul>
+    <li v-for="i in 10" :key="i" v-if="i > 5" >{{ i }}</li>
+  </ul>
+</template>
+```
+
+因为`v-for` 先被渲染出来，所以`v-if` 表达式里面的变量`i`可以正常获取。但是这样就造成资源的浪费，先通过 `v-for` 渲染出来，然后又立即将部分DOM给移除了。
+
+为什么不先确定要真正需要渲染的列表再渲染呢？
+
+
+
+## Vue 3.x 调整 `v-if` 和 `v-for` 优先级
+
+ 为了避免上面例子的出现，Vue 3.x 对 `v-if` 和 `v-for` 的优先级做了对调。即， 如果在一个元素上同时使用`v-for` 和 `v-if`，`v-if` 的优先级高于 `v-for`。这样调整之后，上面的例子就不能正常使用了。因为 `v-if` 优先处理，那表达式里的变量 `i` 就无法获取到，导致报错。通过这样的调整，从而规范了两者的使用。
+
+![_E__docs-warehouse_vue 3.0_images_transitions.svg](C:\Users\F1336455.TSBG\Downloads\_E__docs-warehouse_vue%203.0_images_transitions.svg.png)
