@@ -26,4 +26,8 @@ features:
     details: 本系列是一个 Vue CLI 4.0 webpack 的入门专栏，主要介绍的是 Vue CLI 4.0 webpack 基础内容，将会结合 Vue CLI 4.0 的官方文档，对 Vue CLI 4.0 的 webpack 的一些常用配置属性进行讲解。
     link: /webpack-vue-cli4
     linkText: Learn more
+  - title: Web 性能优化
+    details:
+    link: /web-optimization
+    linkText: Learn more
 ---

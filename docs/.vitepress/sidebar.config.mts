@@ -86,6 +86,13 @@ const sidebarConfig: DefaultTheme.Sidebar = {
       collapsed: false,
       items: createSideBar([], '/vue2-to-vue3')
     }
+  ],
+  '/web-optimization/': [
+    {
+      text: 'Web 性能优化',
+      collapsed: false,
+      items: createSideBar([], '/web-optimization')
+    }
   ]
 }
 
