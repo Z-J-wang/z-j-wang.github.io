@@ -93,6 +93,13 @@ const sidebarConfig: DefaultTheme.Sidebar = {
       collapsed: false,
       items: createSideBar([], '/web-optimization')
     }
+  ],
+  '/server/': [
+    {
+      text: '服务器相关',
+      collapsed: false,
+      items: createSideBar([], '/server')
+    }
   ]
 }
 
