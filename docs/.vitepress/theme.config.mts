@@ -10,6 +10,7 @@ const themeConfig: DefaultTheme.Config = {
     { text: '杂谈', link: '/tittle-tattle' },
     { text: '前端与 SEO', link: '/seo' },
     { text: '前端工程化', link: '/front-end-engineering' },
+    { text: '变更日志', link: '/logs' },
     { text: 'TODO', link: '/todo-list' }
   ],
   sidebar: sidebarConfig,
