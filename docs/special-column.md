@@ -30,4 +30,8 @@ features:
     details:
     link: /web-optimization
     linkText: Learn more
+  - title: 服务器相关
+    details: 归纳服务器相关的知识。
+    link: /server
+    linkText: Learn more
 ---

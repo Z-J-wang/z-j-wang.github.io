@@ -4,6 +4,8 @@
 
 - 新增[《变更日志》](./logs.md)页面
 - [《Web 性能优化》](./web-optimization)专栏发布
+- [《服务器相关》](./server)专栏发布
+- 《杂谈专栏》新增[《vscode 实用快捷键》](./tittle-tattle/vscode实用快捷键)文章
 
 ## 2024-11-6
 
