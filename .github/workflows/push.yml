@@ -1,5 +1,5 @@
 name: Lint
-run-name: ${{ github.actor }} running Lint and Test action by ${{ github.event_name }}
+run-name: ${{ github.actor }} running Lint action by ${{ github.event_name }}
 on:
   push:
     branches: [devel]
