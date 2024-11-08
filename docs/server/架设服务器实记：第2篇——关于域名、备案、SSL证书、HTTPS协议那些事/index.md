@@ -239,7 +239,7 @@ keywords: 阿里云,域名,备案,SSL证书,HTTPS协议
    cd /usr/local/nginx/conf
    ```
 
-   ```shel
+   ```shell
    mkdir cert
    ```
 

@@ -100,6 +100,27 @@ const sidebarConfig: DefaultTheme.Sidebar = {
       collapsed: false,
       items: createSideBar([], '/server')
     }
+  ],
+  '/questions/': [
+    {
+      text: '开发问题收录',
+      collapsed: false,
+      items: createSideBar([], '/questions')
+    }
+  ],
+  '/css/': [
+    {
+      text: 'CSS 专栏',
+      collapsed: false,
+      items: createSideBar([], '/css')
+    }
+  ],
+  '/vue/': [
+    {
+      text: 'Vue 专栏',
+      collapsed: false,
+      items: createSideBar([], '/vue')
+    }
   ]
 }
 

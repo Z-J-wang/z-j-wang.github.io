@@ -1,3 +1,37 @@
+# nginx 配置汇总
+
+> [!info]
+> 记录 Nginx 的常用配置。
+
+## 接口转发配置
+
+```nginx
+server {
+  listen       9559;
+  server_name  10.0.2.15 127.0.0.1;
+
+  location / { #代理url根路径的全部请求
+
+    # 通过add_header给回传给客户端的请求设置跨域配置响应头信息
+
+    # 由于需要传输cookie，需要指定具体的Access-Control-Allow-Origin。不能设置为*
+    add_header Access-Control-Allow-Origin http://localhost:3000 always;
+    add_header Access-Control-Allow-Headers "Accept,Accept-Encoding,Accept-Language,Connection,Content-Length,Content-Type,Host,Origin,Referer,User-Agent";
+    add_header Access-Control-Allow-Methods "GET, POST, PUT, OPTIONS";
+    # 服务端同意跨域传输凭证,cookie传输必须开启
+    add_header Access-Control-Allow-Credentials true;
+
+    if ($request_method = 'OPTIONS') {
+      return 200;
+    }
+
+    proxy_pass http://dbdev.cngb.org; # 将接口代理到http://dbdev.cngb.org
+  }
+}
+```
+
+说明：监听`10.0.2.15`和` 127.0.0.1`的`9559`端口，劫持其中所有的请求。然后模拟被劫持的请求向`http://dbdev.cngb.org`发起请求。待`http://dbdev.cngb.org`响应请求后，将响应的数据转发给被劫持的请求，并添加所需的响应头。此外，对于`OPTIONS`请求，立即响应 200 状态码。
+
 ## nginx ssl(https) 配置
 
 操作：进入 nginx 的配置文件目录:

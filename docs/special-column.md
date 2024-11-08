@@ -34,4 +34,16 @@ features:
     details: 归纳服务器相关的知识。
     link: /server
     linkText: Learn more
+  - title: 开发问题收录
+    details: 记录开发过程中遇到的问题。
+    link: /questions
+    linkText: Learn more
+  - title: CSS 专栏
+    details: CSS 知识点汇总。
+    link: /css
+    linkText: Learn more
+  - title: vue 专栏
+    details: vue 知识点汇总。
+    link: /vue
+    linkText: Learn more
 ---
