@@ -146,7 +146,8 @@ function createSideBar(
   return customSideBars.concat(
     getSideBar('./docs' + path, options || defaultOptions)
       .reduce((sideBars: SideBar[], item: any) => {
-        let { text, link } = item.items[0]
+        let { link } = item.items[0]
+        let text = link
         link = path + '/' + link
 
         // 删除子目录的index.md文件名中的 'Index' 后缀
