@@ -42,7 +42,7 @@ robots.txt 是由一条条规则组成的。创建 robots.txt，也就是编写 
 
 下面是一个适用于 Google 的 robots.txt 文件，其包含两条规则：
 
-```txt
+```text
 User-agent: Googlebot
 Disallow: /nogooglebot/
 

@@ -31,10 +31,3 @@ features:
     link: /front-end-engineering
     linkText: Learn more
 ---
-
-<style>
-/* stylelint-disable-next-line selector-pseudo-element-no-unknown */
-::view-transition-group(root) {
-  background-color: #1b1b1f !important;
-}
-</style>
