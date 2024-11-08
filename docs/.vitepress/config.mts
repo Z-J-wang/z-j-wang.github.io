@@ -15,6 +15,7 @@ export default withMermaid({
     // 主题颜色模式切换
     appearance: true,
     head: headConfig,
+    ignoreDeadLinks: true,
     markdown: {
       image: {
         lazyLoading: true // 启用图片懒加载
