@@ -1,4 +1,4 @@
-﻿# Web 性能优化——Vue Webpack 打包优化——路由懒加载（按需加载）原理讲解及使用方法
+﻿# Web 性能优化——简述访问某个网址浏览器背后所做的工作
 
 > [!warning] 阅前悉知
 >
@@ -186,8 +186,3 @@ Reflow 比 Repaint 更加花费时间。结合上图可以看出，触发 Reflow
 - [《how browsers work》中文译本](http://kb.cnblogs.com/page/129756/)
 - [浏览器页面加载过程](https://blog.csdn.net/qq_39795538/article/details/82764250?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-4&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-4)
 - [浏览器~加载，解析，渲染](https://www.jianshu.com/p/e141d1543143)
-
-### 本系列其他文章：
-
-- [Web 优化——正确放置 CSS 和 Javascript，减少页面渲染时间](https://blog.csdn.net/weixin_44869002/article/details/106717612)
-- [Web 优化——资源加载优化](https://blog.csdn.net/weixin_44869002/article/details/106717640)
