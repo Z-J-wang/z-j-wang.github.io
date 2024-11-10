@@ -18,7 +18,7 @@
 >
 > - 其二，如果浏览器加载到`<script>`会暂停渲染，优先去加载、解析、执行 Javascript。直到 Javascrip 执行完成。这是因为 Javascript 可能会影响`Rendering(渲染) Tree`。
 
-如果对上面存在疑问，可查阅[《Web 优化——简述访问某个网址浏览器背后所做的工作》]()做进一步了解。
+如果对上面存在疑问，可查阅[《Web 优化——简述访问某个网址浏览器背后所做的工作》](./第1篇：简述访问某个网址浏览器背后所做的工作)做进一步了解。
 
 ### 优化一：将 CSS 放在页面最上面，Javascript 放在页面最下面
 
@@ -94,18 +94,3 @@
 
 - [浏览器解析 css 选择器的规则](https://blog.csdn.net/qq_21397815/article/details/72874932?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3)
 - [浏览器加载、解析、渲染的过程](https://blog.csdn.net/XIAOZHUXMEN/article/details/52014901?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1)
-
-### 本系列其他文章：
-
-- [Web 优化——浏览器访问某个网址背后所做的工作](https://blog.csdn.net/weixin_44869002/article/details/106764779)
-- [Web 优化——资源加载优化](https://blog.csdn.net/weixin_44869002/article/details/106717640)
-
----
-
-恰饭时间，嘻嘻！！！
-
-推荐的是齐伟老师的两门课程：《8 小时 Python 零基础轻松入门》《迈向数据科学家：带你玩转 Python 数据分析》
-
-[video(video-aRXmjtD8-1592043158500)(type-edu_course)(url-https://edu.csdn.net/course/blogPlay?goods_id=19165&blog_creator=weixin_44869002&marketing_id=162)(image-https://i-blog.csdnimg.cn/blog_migrate/43fe276294efeee7ea2ea6e6b68edbd0.jpeg)(title-8 小时 Python 零基础轻松入门)]
-
-[video(video-R6aaJZDe-1592043185413)(type-edu_course)(url-https://edu.csdn.net/course/blogPlay?goods_id=17702&blog_creator=weixin_44869002&marketing_id=144)(image-https://i-blog.csdnimg.cn/blog_migrate/98ce524b977fd4df6de604159cf9b9cd.jpeg)(title-迈向数据科学家：带你玩转 Python 数据分析)]
