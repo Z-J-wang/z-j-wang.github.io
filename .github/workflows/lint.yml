@@ -4,6 +4,11 @@ name: Lint
 on:
   workflow_call:
 
+# gitHub Actions 禁用 Husky
+env:
+  HUSKY: 0
+
+
 jobs:
   lint:
     runs-on: ubuntu-latest

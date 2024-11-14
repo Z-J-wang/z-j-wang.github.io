@@ -43,7 +43,7 @@ div {
 ### 5. 每条样式规则后都要带分号
 
 ```css
-// aviod
+// avoid
 .selector {
   margin: 0
   padding: 0
@@ -81,8 +81,8 @@ div {
 
 ```css
 .selector {
-  color: #ffffff;			// good
-  background-color: #FFF;  // aviod
+  color: #ffffff;          // good
+  background-color: #FFF;  // avoid
 }
 ```
 
@@ -99,7 +99,7 @@ input[name="username"] {
 ```css
 .selector {
   color: #ffffff;			// good
-  background-color:#FFF;  // aviod
+  background-color:#FFF;  // avoid
 }
 ```
 
@@ -109,7 +109,7 @@ input[name="username"] {
 
 ```css
 .selector {
-  padding: 0px;			// aviod
+  padding: 0px;			// avoid
   margin: 0;				// good
 }
 ```

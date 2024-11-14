@@ -9,6 +9,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# gitHub Actions 禁用 Husky
+env:
+  HUSKY: 0
+
 jobs:
   lint:
     uses: ./.github/workflows/lint.yml
