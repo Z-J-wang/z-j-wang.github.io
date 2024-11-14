@@ -26,7 +26,7 @@ description: 编写 HTML 代码时，我们需要遵循一定的规范，以保�
 - 对于属性的定义，永远全部使用双引号，绝不要使用单引号。
 
   ```html
-  <!-- aviod -->
+  <!-- avoid -->
   <div class='class_name'></div>
   
   <!-- ok -->
@@ -36,7 +36,7 @@ description: 编写 HTML 代码时，我们需要遵循一定的规范，以保�
 - 不要省略可选的结束标签（closing tag）（例如，`</li>` 或 `</body>`）。
 
   ```html
-  <!-- aviod -->
+  <!-- avoid -->
   <section>
     <p>这是一个段落。
     <p>这是一个段落。
