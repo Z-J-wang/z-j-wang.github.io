@@ -108,3 +108,33 @@ git config --global core.autocrlf input
 
 首先，你需要生成 SSH 密钥。
 详见：[生成新的 SSH 密钥并将其添加到 ssh-agent - GitHub Enterprise Server 3.15 Docs](https://docs.github.com/zh/enterprise-server@3.15/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key)
+
+## 使用 .gitignore 文件，避免将不必要的文件提交到仓库
+
+.gitignore 文件用于指定哪些文件或目录不应该被提交到仓库。例如，你可以将 node_modules 目录添加到 .gitignore 文件中，这样 git 就不会跟踪这个目录下的文件。
+
+```bash
+## 忽略 node_modules 目录
+node_modules/
+```
+
+## 使用 git stash 保存当前工作进度
+
+如果你正在开发一个功能，但是突然需要切换到另一个分支进行修复，你可以使用 git stash 命令来保存当前的工作进度。这样你就可以切换到其他分支进行修复，然后再使用 git stash pop 命令来恢复之前的工作进度。
+
+```bash
+# 保存当前工作进度
+git stash
+
+# 恢复之前的工作进度
+git stash pop
+```
+
+## 使用 .gitkeep 文件，将空目录提交到仓库
+
+因为 git 默认忽略空目录，所以如果你有一个空目录，并且你希望 git 能够跟踪这个目录，你可以在这个目录中添加一个 .gitkeep 文件。这样 git 就会跟踪这个目录，而不会忽略它。
+
+```bash
+# 在空目录中创建 .gitkeep 文件
+touch .gitkeep
+```
