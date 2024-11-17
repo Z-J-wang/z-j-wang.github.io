@@ -88,7 +88,7 @@ description: git 常用命令汇总
 git push -f
 ```
 
-## git log 的用法相关指令
+## git log 相关指令
 
 1. 用`--oneline` 选项来查看历史记录的简洁的版本:
    ```bash
