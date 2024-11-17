@@ -6,7 +6,7 @@
 
 ## 说明
 
-本规划基于 《[Angular 提交信息规范](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#commit)》，并做了一些修改。主要是简化了 Subject 部分，不要求`<BLANK LINE>`、`<body`和`<footer>`。
+本规划基于 《[Angular 提交信息规范](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#commit)》，并结合网上的建议做了一些修改。主要是简化了 Subject 部分，不要求`<BLANK LINE>`、`<body`和`<footer>`。
 
 ## 格式
 
