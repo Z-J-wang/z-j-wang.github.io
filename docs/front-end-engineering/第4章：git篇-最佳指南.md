@@ -102,6 +102,16 @@ git config --global core.autocrlf input
 > [!TIP] 注意
 > 如果你的项目中使用了 ESLint 等工具，来检测换行符，你需要根据实际情况来设置 `core.autocrlf`。例如，项目中使用了 ESLint，并且 ESLint 的配置文件中指定了换行符为 LF，那么无论在 Windows 系统还是 Unix/Linux 系统中，你都应该将 `core.autocrlf` 设置为 input。
 
+## 设置 core.quotepath，解决中文乱码
+
+如果你在 git 中遇到中文乱码的问题，你可以尝试设置 `core.quotepath` 为 false。例如：
+
+```bash
+git config --global core.quotepath false
+```
+
+这将会在 git 中显示中文路径，而不是乱码。
+
 ## 使用 ssh 密钥，避免每次 push 都需要输入用户名和密码
 
 如果你使用 HTTPS URL 来 clone 仓库，那么每次 push 都需要输入用户名和密码。为了避免每次 push 都需要输入用户名和密码，你可以使用 SSH URL 来 clone 仓库，并设置 SSH 密钥。
@@ -138,3 +148,114 @@ git stash pop
 # 在空目录中创建 .gitkeep 文件
 touch .gitkeep
 ```
+
+## git clone 指定分支
+
+如果你只想 clone 某个分支，你可以使用 `git clone` 命令的 `-b` 选项来指定分支。例如：
+
+```bash
+git clone -b <branch-name> <repository-url>
+```
+
+这将会只 clone 指定的分支，而不会 clone 整个仓库。
+
+## git clone 指定 tag
+
+如果你只想 clone 某个 tag，你可以使用 `git clone` 命令的 `-b` 选项来指定 tag。例如：
+
+```bash
+git clone -b <tag-name> <repository-url>
+```
+
+这将会只 clone 指定的 tag，而不会 clone 整个仓库。
+
+## git log 的用法相关指令
+
+1. 用`--oneline` 选项来查看历史记录的简洁的版本:
+   ```bash
+   git log --oneline
+   ```
+2. 用 `--graph` 选项，查看历史中什么时候出现了分支、合并,开启了拓扑图选项:
+   ```bash
+   git log --graph
+   ```
+3. 用 `--reverse` 参数来逆向显示所有日志:
+   ```bash
+   git log --reverse
+   ```
+4. 用 `--author` 选项来查看具体某个用户的提交信息：
+   ```bash
+   git log --author=Linus --oneline -5
+   ```
+5. 用 `--since`、`--before`、`--until`、`--after` 设定具体要查看的日期：
+   ```bash
+   git log --oneline --before={3.weeks.ago} --after={2010-04-18} --no-merges
+   ```
+6. 用 `--stat` 查看修改文件及添加/删除的行的摘要：
+   ```bash
+   git log --stat
+   ```
+7. 用 `--patch` 查看修改文件及添加/删除的行的详细信息：
+   ```bash
+   git log --patch
+   ```
+
+## 了解 git fetch 和 git pull 的区别
+
+`git fetch` 和 `git pull` 都是用于从远程仓库获取更新的命令，但是它们有一些区别。
+
+`git fetch` 命令只会从远程仓库获取更新，但是不会将这些更新合并到你的本地分支。你需要使用 `git merge` 命令来将这些更新合并到你的本地分支。例如：
+
+```bash
+git fetch origin
+git merge origin/master
+```
+
+`git pull` 命令会从远程仓库获取更新，并将这些更新合并到你的本地分支。这相当于执行了 `git fetch` 和 `git merge` 命令。例如：
+
+```bash
+git pull origin master
+```
+
+## 清除 git 缓存
+
+如果你想要清除 git 缓存，你可以使用 `git gc` 命令。例如：
+
+```bash
+git gc
+```
+
+这将会清除 git 缓存，释放一些磁盘空间。
+
+## 清理远程不存在的分支
+
+1. 专门用于清理指定远程仓库（在这个例子中是 origin）的本地跟踪分支，这些分支在远程仓库中已不存在。
+   ```bash
+   git remote prune origin
+   ```
+2. 在执行 fetch 操作时，同时清理那些已经从远程仓库删除的引用。
+   ```bash
+   git fetch --prune
+   ```
+
+**总结**
+
+`git fetch -p`:
+
+- 在获取远程仓库最新数据的同时，清理不再存在的远程跟踪分支。
+- 适用于所有配置的远程仓库。
+
+`git remote prune origin`:
+
+- 专门用于清理指定远程仓库（如 origin）的不再存在的远程跟踪分支。
+- 不会更新远程仓库的数据，只负责清理。
+
+## git commit --amend 修改最近一次提交
+
+如果你想要修改最近一次提交，你可以使用 `git commit --amend` 命令。例如：
+
+```bash
+git commit --amend
+```
+
+这将会打开一个编辑器，让你修改提交信息，或者新增提交内容。修改完成后，保存并关闭编辑器，git 就会修改最近一次提交。同样，你也可以使用 `git commit --amend --no-edit` 命令来修改最近一次提交，但是不修改提交信息。
