@@ -102,3 +102,10 @@ GitLab Flow 是一种结合了 Git Flow 和 GitHub Flow 的分支管理策略，
 6. **分支管理工具**：选择合适的分支管理工具，如 GitLab、GitHub 等，以支持分支管理策略的实施。
 
 总之，制定分支管理策略需要根据团队规模、项目需求和开发流程等因素进行综合考虑，并灵活调整。同时，还需要制定分支命名规范和代码审查规则，以确保分支管理策略的实施。
+
+## 参考文献
+
+- [Git Flow](https://www.atlassian.com/zh/git/tutorials/comparing-workflows/gitflow-workflow)
+- [GitHub Flow](https://guides.github.com/introduction/flow/)
+- [GitLab Flow](https://docs.gitlab.com/ee/topics/gitlab_flow.html)
+- [史上最全分支管理策略说明及优缺点](https://blog.csdn.net/wang_zhong_cheng/article/details/120454376)
