@@ -1,6 +1,6 @@
 ---
 author: 王志杰
-date: 2024-10-23
+date: 2024-11-18
 keywords: git, git 最佳实践, git 常用命令
 description: 合理使用 git 是程序员的基本功。良好的 git 使用习惯是程序员很重要的一项“加分项”。本文旨在帮助大家快速掌握 git 的使用，并养成良好的 git 使用习惯
 ---
