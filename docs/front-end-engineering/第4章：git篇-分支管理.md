@@ -62,8 +62,14 @@ Git Flow 的分支管理策略具有以下优点：
 然而，Git Flow 也有一些缺点：
 
 - **分支数量较多**：Git Flow 定义了多种分支类型，每个分支都有特定的用途。这可能会导致分支数量较多，增加了分支管理的复杂度。
-- **分支生命周期较长**：某些分支（如发布分支和修复分支）的生命周期较长，这可能会增加分支管理的负担。
 - **分支合并频繁**：Git Flow 要求在各个分支之间频繁地进行合并操作，这可能会增加代码冲突的风险。
+- **维护成本**：维护多个分支和标签需要额外的工作量，特别是在项目规模较大时。这可能导致项目进展缓慢或资源分配不均。
+
+适用场景：
+
+- 项目规模较大，需要明确的分支管理和协作流程来确保项目的顺利进行。
+- 团队成员较多，需要一种结构化的分支管理策略来协调不同团队成员之间的工作。
+- 多版本维护：项目需要同时维护多个版本，例如支持旧版本的 bug 修复和新版本的开发。
 
 ### GitHub Flow
 
@@ -93,7 +99,7 @@ GitHub Flow 的分支管理策略具有以下优点：
 
 GitLab Flow 是一种结合了 Git Flow 和 GitHub Flow 的分支管理策略，它结合了两种策略的优点，并引入了一些新的概念和规则。GitLab Flow 的核心分支包括：
 
-待完善
+1. **主分支（Master）**：主分支是代码库的稳定版本，通常用于生产环境。它只接受来自发布分支的合并，并且每次合并都会进行严格的代码审查和测试。
 
 ## 制定分支管理策略
 
@@ -114,5 +120,5 @@ GitLab Flow 是一种结合了 Git Flow 和 GitHub Flow 的分支管理策略，
 
 - [Git Flow](https://www.atlassian.com/zh/git/tutorials/comparing-workflows/gitflow-workflow)
 - [GitHub Flow](https://guides.github.com/introduction/flow/)
-- [GitLab Flow](https://docs.gitlab.com/ee/topics/gitlab_flow.html)
+- [GitLab Flow](https://gitlab.cn/docs/jh/topics/gitlab_flow.html)
 - [史上最全分支管理策略说明及优缺点](https://blog.csdn.net/wang_zhong_cheng/article/details/120454376)
