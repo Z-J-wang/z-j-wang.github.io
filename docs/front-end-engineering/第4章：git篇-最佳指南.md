@@ -1,6 +1,6 @@
 ---
 author: 王志杰
-date: 2024-10-23
+date: 2024-11-18
 keywords: git, git 最佳实践, git 常用命令
 description: 合理使用 git 是程序员的基本功。良好的 git 使用习惯是程序员很重要的一项“加分项”。本文旨在帮助大家快速掌握 git 的使用，并养成良好的 git 使用习惯
 ---
@@ -74,9 +74,25 @@ chore: update dependencies
 
 将基础分支合并到衍生分支时，使用 `git rebase` 而不是 `git merge` 可以保持项目的提交历史更加清晰和简洁。rebase 会将当前分支的提交应用到目标分支的最新提交上，而 merge 会将两个分支的提交合并在一起。使用 rebase 可以避免不必要的合并提交，使提交历史更加线性。
 
+```bash
+# 切换到衍生分支
+git checkout feature-branch
+
+# 将基础分支的提交应用到衍生分支上
+git rebase base-branch
+```
+
 #### 将衍生分支合并到基础分支时，使用 git merge 而不是 git rebase
 
 将衍生分支合并到基础分支时，使用 `git merge` 而不是 `git rebase`。merge 会将两个分支的提交合并在一起，而 rebase 会将当前分支的提交应用到目标分支的最新提交上。使用 merge 可以保留衍生分支的提交历史，而 rebase 会改变提交历史，可能会引入不必要的冲突和问题。
+
+```bash
+# 切换到基础分支
+git checkout base-branch
+
+# 将衍生分支的提交合并到基础分支上
+git merge feature-branch
+```
 
 ## 三个及时
 
