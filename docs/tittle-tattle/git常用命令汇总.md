@@ -310,7 +310,24 @@ git config --system --list
 
 在设置`core.autocrlf`时，还应该考虑到项目中是否包含二进制文件，因为错误的行结束符转换可能会损坏这些文件。
 
-## 常遇到的使用
+## 认识 git rm --cached
+
+`git rm --cached` 是一个 Git 命令，用于从 Git 的索引（也称为暂存区或暂存索引）中移除文件，但不会从工作目录中删除这些文件。这个命令主要用于处理那些已经被 Git 跟踪，但你想要从版本控制中移除（即不再跟踪）的文件，同时又不希望这些文件在你的工作目录中消失。
+
+使用 `git rm --cached` 的常见场景包括：
+
+1. **忽略已跟踪的文件**：
+   有时候，你可能不小心将一些不应该被版本控制的文件或目录添加到了 Git 仓库中。通过 `git rm --cached`，你可以从 Git 的跟踪中移除这些文件，然后可以将它们添加到 `.gitignore` 文件中，以确保它们在未来不会被意外添加。
+
+2. **迁移 `.gitignore` 规则**：
+   当你向项目中添加 `.gitignore` 文件或更新其规则时，可能已经有一些文件被 Git 跟踪了，而这些文件现在应该被忽略。使用 `git rm --cached` 可以帮助你从 Git 的跟踪中移除这些文件，然后它们就会受到 `.gitignore` 规则的影响。
+
+3. **处理大小写敏感性问题**：
+   在跨平台工作时，文件名的大小写可能会引起问题。例如，在 Windows（不区分大小写）上创建的文件可能在 Linux（区分大小写）上导致冲突。使用 `git rm --cached` 移除有问题的文件，然后按照正确的大小写重新添加它们，可以解决这个问题。
+
+请注意，`git rm --cached` 不会删除工作目录中的文件，因此你需要确保在提交更改后，这些文件不会对你的项目产生负面影响。此外，如果你正在与他人协作，并且他们的工作目录中还包含这些被移除的文件，他们可能需要执行一些额外的步骤来同步更改。
+
+## 常遇到的使用场景
 
 ### 场景：生成 ssh 密钥
 
@@ -448,7 +465,7 @@ git config core.quotepath false
 git pull origin master --allow-unrelated-histories
 ```
 
-### 问题解决：大小写问题（强制大小写敏感）
+### 问题解决：大小写问题
 
 git 默认大小写不敏感。这要就导致有时我们修改了文件名，但是 git 并没有记录。
 为此，我们可以设置 git 大小写敏感：
@@ -456,16 +473,22 @@ git 默认大小写不敏感。这要就导致有时我们修改了文件名，�
 1. 开启 git 全局大小写敏感：
 
    ```bash
-   git config --global core.ignorecase false
+   git config core.ignorecase false
    ```
 
 2. 关闭 git 大小写敏感：
 
    ```bash
-   git config --global core.ignorecase true
+   git config core.ignorecase true
    ```
 
-   参考：[git 大小写问题 踩坑笔记](https://blog.csdn.net/u013707249/article/details/79135639)
+如果你本地已经出现大小写问题了，仅开启大小写敏感还不行。因为，git 已经记录了大小写不敏感的文件名。这时，你需要强制修改文件名：
+
+```bash
+git mv old_name new_name
+```
+
+这个命令实际上是 `git rm --cached <old_name>` 和 `git add <new_name>` 的组合。
 
 ### 问题解决：因为远程库添加了文件，导致.gitignore 无法生效
 
