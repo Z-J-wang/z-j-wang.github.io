@@ -1,13 +1,14 @@
 ---
 author: 王志杰
 date: 2024-11-18
-keywords: git, git 最佳实践, git 常用命令
+keywords: git, git 实践指南, git 常用命令
 description: 合理使用 git 是程序员的基本功。良好的 git 使用习惯是程序员很重要的一项“加分项”。本文旨在帮助大家快速掌握 git 的使用，并养成良好的 git 使用习惯
+outline: 2
 ---
 
-# git 最佳指南
+# git 实践指南
 
-> [!INFO]
+> [!INFO] 写在最前面
 > 合理使用 git 是程序员的基本功。良好的 git 使用习惯是程序员很重要的一项“加分项”。然而，很多刚接触开发的新人并不重视 git 使用技能的掌握。究其原因，一方面是刚接触开发时，大都是独自摸索阶段，没有团队合作的需要，git 的必要性和优势无法体现。所以 git 的存在就变得可有可无。另一方面，git 并不是编码必备技能，所以很多开发人员并不重视 git 的学习。
 >
 > **基于此因撰写本文，旨在帮助大家快速掌握 git 的使用，并养成良好的 git 使用习惯**。
@@ -25,7 +26,9 @@ description: 合理使用 git 是程序员的基本功。良好的 git 使用习
 >
 > **综上**，我认为学习 git 指令是非常必要的。同时也鼓励大家多去使用 git 指令。
 
-## 一个重点：commit message 应清晰明了
+## 一个重点
+
+> [!IMPORTANT] Commit message 应清晰明了！！！
 
 我认为 commit message 是 git 中最重要的部分之一。一个好的 commit message 可以帮助他人理解你的代码修改，也可以帮助你在未来查找和修复问题。
 
@@ -129,6 +132,125 @@ git merge feature-branch
 
 在合并分支之后，应该及时删除临时分支。这样可以避免临时分支占用不必要的磁盘空间，同时也可以避免误操作导致的问题。
 
+## 认识 git 配置
+
+### 三个层级的配置说明
+
+git 配置文件分为系统级别、用户级别和仓库级别，优先级从高到低。
+
+- 系统级别：对所有用户和所有项目都有效。**一般不建议对其进行修改**。
+- 用户级别：对当前用户和所有项目都有效。
+- 仓库级别：只对当前项目有效。**如需更改 git 配置，优先考虑仓库级别**。
+
+### 查看 git 配置
+
+如需查看配置，优先使用 `git config --list` 命令来查看，而不是打开配置文件查看：
+
+```bash
+git config --list
+```
+
+此命令会**列出所有级别的配置**，包括系统级别、用户级别和仓库级别。优先级高的配置会显示在后面。
+
+还可以通过增加不同的参数来查看不同级别的配置：
+
+```bash
+# 查看系统级别配置
+git config --system --list
+
+# 查看用户级别配置
+git config --global --list
+
+# 查看仓库级别配置
+git config --local --list
+```
+
+如果，你只想查看某个配置项的值，可以使用 `git config <key>` / `git config --get <key>` 命令：
+
+```bash
+git config user.name
+```
+
+或者使用 `git config --get-all <key>` 命令，查看全部层级的配置：
+
+```bash
+git config --get-all user.name
+```
+
+### 修改 git 配置
+
+如需修改配置，优先使用 `git config <key> <value>` 命令来修改，而不是直接编辑配置文件：
+
+```bash
+git config user.name "your name"
+```
+
+### 撤销某项的 git 配置
+
+如需撤销某项配置，可以使用 `git config --unset <key>` 命令：
+
+```bash
+git config --unset user.name
+```
+
+## git log 查看提交日志
+
+1. 用`--oneline` 选项来查看历史记录的简洁的版本:
+   ```bash
+   git log --oneline
+   ```
+2. 用 `--graph` 选项，查看历史中什么时候出现了分支、合并,开启了拓扑图选项:
+   ```bash
+   git log --graph
+   ```
+3. 用 `--reverse` 参数来逆向显示所有日志:
+   ```bash
+   git log --reverse
+   ```
+4. 用 `--author` 选项来查看具体某个用户的提交信息：
+   ```bash
+   git log --author=Linus --oneline -5
+   ```
+5. 用 `--since`、`--before`、`--until`、`--after` 设定具体要查看的日期：
+   ```bash
+   git log --oneline --before={3.weeks.ago} --after={2010-04-18} --no-merges
+   ```
+6. 用 `--stat` 查看修改文件及添加/删除的行的摘要：
+   ```bash
+   git log --stat
+   ```
+7. 用 `--patch` 查看修改文件及添加/删除的行的详细信息：
+   ```bash
+   git log --patch
+   ```
+
+## git reflog 查看历史操作记录
+
+`git reflog` 命令用于查看 git 的历史操作记录，包括分支切换、合并、重置等操作。
+
+搭配 `git reset`，可以撤销一些误操作，比如误删分支、误提交、错误回滚等。
+
+> [!TIP] 注意区分 git log 和 git reflog
+>
+> `git log` 只会显示提交历史，而 `git reflog` 会显示所有的 git 操作历史，包括 `git reset`、`git checkout`、`git merge` 等。
+
+## 了解 git fetch 和 git pull 的区别
+
+`git fetch` 和 `git pull` 都是用于从远程仓库获取更新的命令，但是它们有一些区别。
+
+`git fetch` 命令只会从远程仓库获取更新，但是不会将这些更新合并到你的本地分支。你需要使用 `git merge` 命令来将这些更新合并到你的本地分支。例如：
+
+```bash
+git fetch origin
+git merge origin/master
+```
+
+`git pull` 命令会从远程仓库获取更新，并将这些更新合并到你的本地分支。这相当于执行了 `git fetch` 和 `git merge` 命令。例如：
+
+```bash
+git pull origin master
+```
+
 ## 回退某个 commit
 
 如果你发现某个 commit 中的代码有问题，你可以使用 `git revert` 命令来撤销这个 commit, 而不是 `get reset`。例如：
@@ -231,64 +353,6 @@ git clone -b <tag-name> <repository-url>
 
 这将会只 clone 指定的 tag，而不会 clone 整个仓库。
 
-## git log 相关指令
-
-1. 用`--oneline` 选项来查看历史记录的简洁的版本:
-   ```bash
-   git log --oneline
-   ```
-2. 用 `--graph` 选项，查看历史中什么时候出现了分支、合并,开启了拓扑图选项:
-   ```bash
-   git log --graph
-   ```
-3. 用 `--reverse` 参数来逆向显示所有日志:
-   ```bash
-   git log --reverse
-   ```
-4. 用 `--author` 选项来查看具体某个用户的提交信息：
-   ```bash
-   git log --author=Linus --oneline -5
-   ```
-5. 用 `--since`、`--before`、`--until`、`--after` 设定具体要查看的日期：
-   ```bash
-   git log --oneline --before={3.weeks.ago} --after={2010-04-18} --no-merges
-   ```
-6. 用 `--stat` 查看修改文件及添加/删除的行的摘要：
-   ```bash
-   git log --stat
-   ```
-7. 用 `--patch` 查看修改文件及添加/删除的行的详细信息：
-   ```bash
-   git log --patch
-   ```
-
-## git reflog 查看历史操作记录
-
-`git reflog` 命令用于查看 git 的历史操作记录，包括分支切换、合并、重置等操作。
-
-搭配 `git reset`，可以撤销一些误操作，比如误删分支、误提交、错误回滚等。
-
-> [!TIP] 注意区分 git log 和 git reflog
->
-> `git log` 只会显示提交历史，而 `git reflog` 会显示所有的 git 操作历史，包括 `git reset`、`git checkout`、`git merge` 等。
-
-## 了解 git fetch 和 git pull 的区别
-
-`git fetch` 和 `git pull` 都是用于从远程仓库获取更新的命令，但是它们有一些区别。
-
-`git fetch` 命令只会从远程仓库获取更新，但是不会将这些更新合并到你的本地分支。你需要使用 `git merge` 命令来将这些更新合并到你的本地分支。例如：
-
-```bash
-git fetch origin
-git merge origin/master
-```
-
-`git pull` 命令会从远程仓库获取更新，并将这些更新合并到你的本地分支。这相当于执行了 `git fetch` 和 `git merge` 命令。例如：
-
-```bash
-git pull origin master
-```
-
 ## 清除 git 缓存
 
 如果你想要清除 git 缓存，你可以使用 `git gc` 命令。例如：
@@ -364,3 +428,15 @@ git config --global core.editor "vim"
 > - `:w!`：强制保存。
 > - `:e!`：强制重新加载文件。
 > - `:help`：查看帮助文档。
+
+## 开启大小写敏感
+
+是否开启大小敏感，众说纷纭。但在我实际体验下来，**开启大小敏感可以避免很多不必要的麻烦**。
+
+首先，只有 Windows 系统才不区别大小写，而 Linux 和 Mac 系统都是区分大小写的。所以，开启大小敏感，可以避免多人合作时因为操作系统的不同中，而产生大小写不敏感导致文件丢失的问题。其次，项目最终都会部署到服务器上，而服务器一般都是 Linux 系统，所以开启大小敏感，可以避免在服务器上，因为大小写不敏感，导致文件丢失的问题。
+
+通过以下命令开启大小敏感：
+
+```bash
+git config core.ignorecase false
+```
