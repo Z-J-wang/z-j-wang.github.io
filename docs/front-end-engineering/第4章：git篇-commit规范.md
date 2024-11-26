@@ -1,3 +1,10 @@
+---
+author: 王志杰
+date: 2024-11-23
+keywords: git, commit 规范, commit message
+description: 在团队协作中，git 代码提交规范非常重要，它有助于团队成员理解每次提交的目的，提高代码质量，方便代码审查，代码回溯等。
+---
+
 # git commit 规范
 
 ## 必要性
