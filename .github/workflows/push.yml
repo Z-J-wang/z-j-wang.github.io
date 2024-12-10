@@ -3,7 +3,6 @@ run-name: ${{ github.actor }} running Lint action by ${{ github.event_name }}
 on:
   push:
     branches: 
-      - 'devel'
       - '!main'
   pull_request:
     branches: [main]
