@@ -1,3 +1,10 @@
+---
+author: 王志杰
+date: 2024-12-17
+keywords: VS Code, 文件管理, 文件嵌套, 配置项, explorer.fileNesting
+description: explorer.fileNesting 是 Visual Studio Code（VS Code）中一个与文件嵌套显示相关的设置项。它允许用户根据文件名或自定义规则来嵌套相关文件，从而在文件资源管理器中提高文件组织的清晰度和工作效率。
+---
+
 # explorer.fileNesting：一个可以帮助你更好的管理文件的配置项
 
 最近在新建 Vue 3.0 项目的时候，突然发现`package.json`文件非常神奇的变成了文件夹。如下图：
