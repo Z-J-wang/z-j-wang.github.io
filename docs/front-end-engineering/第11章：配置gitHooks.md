@@ -72,3 +72,31 @@ init 命令简化了项目中的 husky 设置。它会在 .husky/ 中创建 pre-
 ## 项目实战
 
 了解了 Git hooks 的原理和使用方法后，我们就可以在项目中使用 Git hooks 来实现一些自动化操作。比如前面所说的，为了保证 commit message 可读性，我们给 commit message 制定的一套规范。现在我们就可以借助 Husky 在提交代码时自动检查 commit message 是否符合规范，如果不符合规范，则阻止提交。
+
+> [!INFO] 具体需求:
+>
+> 1. 由于需要对 commit message 进行检查, 因此需要新增 commit-msg 钩子
+> 2. 采用`commitlint`工具进行 commit message 格式检查
+> 3. 采用`husky`工具管理 Git hooks
+
+### 安装依赖
+
+```bash
+yarn add @commitlint/{cli,config-conventional} husky --dev
+```
+
+### 配置 commitlint
+
+执行以下命令，在项目根目录下创建一个`.commitlintrc.js`文件，并添加内容：
+
+```bash
+echo "export default { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
+```
+
+### 配置 Husky
+
+执行以下命令，在`.husky/`目录下创建一个`commit-msg`文件，并添加内容：
+
+```bash
+echo "npx commitlint --edit $1" > .husky/commit-msg
+```
