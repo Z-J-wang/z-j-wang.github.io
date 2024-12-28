@@ -87,7 +87,7 @@ yarn add @commitlint/{cli,config-conventional} husky --dev
 
 ### 配置 commitlint
 
-执行以下命令，在项目根目录下创建一个`.commitlintrc.js`文件，并添加内容：
+执行以下命令，在项目根目录下创建一个`commitlint.config.js`文件，并添加内容：
 
 ```bash
 echo "export default { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
@@ -98,5 +98,50 @@ echo "export default { extends: ['@commitlint/config-conventional'] };" > commit
 执行以下命令，在`.husky/`目录下创建一个`commit-msg`文件，并添加内容：
 
 ```bash
-echo "npx commitlint --edit $1" > .husky/commit-msg
+echo "yarn commitlint --edit \$1" > .husky/commit-msg
 ```
+
+完成以上步骤后，我们就可以在提交代码时自动检查 commit message 是否符合规范了。如果不符合规范，则阻止提交。
+
+此时，commitlint 采用的是`@commitlint/config-conventional`规范。根据[《第 4 章：git 篇-commit 规范》](./第4章：git篇-commit规范)的要求，需要对`commitlint.config.js`文件做如下调整：
+
+> [!INFO] commitlint 配置项
+> commitlint 配置项说明文档：https://commitlint.js.org/reference/configuration.html
+
+```js
+// commitlint 配置项说明：https://commitlint.js.org/reference/configuration.html
+export default {
+  extends: ['@commitlint/config-conventional'],
+
+  /**
+   * 自定义 commitlint 规则。详见：https://commitlint.js.org/reference/rules.html
+   *
+   * type-enum 限定的提交类型。
+   *
+   * feat：新增功能（feature）
+   * fix：修补 bug
+   * docs：文档（documentation）
+   * style： 格式（不影响代码运行的变动）
+   * refactor：重构（即不是新增功能，也不是修改 bug 的代码变动）
+   * perf：改进性能的代码更改
+   * test：增加测试用例
+   * chore：构建过程或辅助工具的变动
+   * delete：删除功能或者文件
+   * modify：修改功能
+   * build：改变构建流程，新增依赖库、工具等
+   * ci：自动化流程配置更改
+   * revert：代码回滚
+   */
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore', 'delete', 'modify', 'build', 'ci', 'revert']
+    ]
+  }
+}
+```
+
+## 写在最后
+
+本文主要阐述了 Git hooks 的基本原理及其操作方式，并深入探讨了如何利用 Husky 来高效管理这些 Git hooks。在项目开发流程中，Git hooks 能够助力我们实现自动化操作，例如，在代码提交阶段自动验证 commit message 是否遵循既定规范或者结合 lint-staged 实现代码校验等。在构建前端工程化体系时，Git hooks 无疑是一个举足轻重的工具，它不仅能够提升代码质量管理水平，还能促进团队协作的顺畅进行，且可根据实际需求灵活配置与应用。
