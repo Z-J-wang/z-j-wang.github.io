@@ -1,3 +1,10 @@
+---
+author: 王志杰
+date: 2024-12-28
+keywords: git hooks, commit-msg, husky, commitlint
+description: 本文主要阐述了 Git hooks 的基本原理及其操作方式，并深入探讨了如何利用 Husky 来高效管理这些 Git hooks。在项目开发流程中，Git hooks 能够助力我们实现自动化操作，例如，在代码提交阶段自动验证 commit message 是否遵循既定规范或者结合 lint-staged 实现代码校验等。在构建前端工程化体系时，Git hooks 无疑是一个举足轻重的工具，它不仅能够提升代码质量管理水平，还能促进团队协作的顺畅进行，且可根据实际需求灵活配置与应用。
+---
+
 # 配置 Git hooks
 
 ## Git hooks 简介
@@ -67,7 +74,12 @@ npx husky init
 
 init 命令简化了项目中的 husky 设置。它会在 .husky/ 中创建 pre-commit 脚本，并更新 package.json 中的 prepare 脚本。
 
-> [!INFO] 更多 Husky 知识可查看：https://typicode.github.io/husky/
+> [!TIP] 所使用的 Husky 版本
+>
+> - `husky`：9.1.7。
+
+> [!INFO]
+> 更多 Husky 知识可查看：https://typicode.github.io/husky/
 
 ## 项目实战
 
@@ -84,6 +96,11 @@ init 命令简化了项目中的 husky 设置。它会在 .husky/ 中创建 pre-
 ```bash
 yarn add @commitlint/{cli,config-conventional} husky --dev
 ```
+
+> [!TIP] 所使用的 commitlint 插件版本
+>
+> - `@commitlint/cli`: 19.6.1
+> - `@commitlint/config-conventional`: 19.6.0
 
 ### 配置 commitlint
 
@@ -105,7 +122,7 @@ echo "yarn commitlint --edit \$1" > .husky/commit-msg
 
 此时，commitlint 采用的是`@commitlint/config-conventional`规范。根据[《第 4 章：git 篇-commit 规范》](./第4章：git篇-commit规范)的要求，需要对`commitlint.config.js`文件做如下调整：
 
-> [!INFO] commitlint 配置项
+> [!INFO]
 > commitlint 配置项说明文档：https://commitlint.js.org/reference/configuration.html
 
 ```js
