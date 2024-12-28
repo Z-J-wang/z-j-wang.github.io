@@ -1,6 +1,8 @@
 {
   "type": "module",
   "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
     "@mdit/plugin-footnote": "^0.13.1",
     "@mdit/plugin-tasklist": "^0.13.1",
     "@vue/eslint-config-prettier": "^9.0.0",
@@ -8,6 +10,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.11.0",
+    "husky": "^9.1.7",
     "mermaid": "^11.1.1",
     "prettier": "^2.8.8",
     "stylelint": "^13.3.3",
@@ -25,6 +28,7 @@
     "lint": "yarn lint:eslint && yarn lint:stylelint",
     "lint:fix": "yarn lint --fix",
     "lint:eslint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .eslintignore",
-    "lint:stylelint": "stylelint --config .stylelintrc.cjs --ignore-path .stylelintignore ./**/*.{html,vue,js,ts,css,sass,scss,less}"
+    "lint:stylelint": "stylelint --config .stylelintrc.cjs --ignore-path .stylelintignore ./**/*.{html,vue,js,ts,css,sass,scss,less}",
+    "prepare": "husky"
   }
 }
