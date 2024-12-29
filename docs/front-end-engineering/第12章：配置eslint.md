@@ -486,3 +486,8 @@ module.exports = {
 ## 写在最后
 
 本章节较为全面的阐述了 ESLint 的作用以及如何配置使用 ESLint。ESLint 不但可以规范代码风格，提高代码质量，而且还可以通过 ESLint 的插件机制，实现代码的自动修正，从而提高开发效率。此外，借助 ESLint，我们可以把编码规范中的大多数细节交给工具去处理，从而让代码审查人员把精力集中在业务逻辑、代码质量以及自动化工具无法兼顾的编码规范上。
+
+## 参考
+
+- [ESLint 入门](https://zh-hans.eslint.org/docs/latest/use/getting-started)
+- [ESLint 之与 Prettier 配合使用 - 掘金 (juejin.cn)](https://juejin.cn/post/6924568874700505102)
