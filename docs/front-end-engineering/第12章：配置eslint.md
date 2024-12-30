@@ -213,11 +213,11 @@ module.exports = {
 }
 ```
 
-## 第二步，设置忽略规则
+## 第二步，设置文件忽略规则
 
-像`node_moudle`、`dist`等目录下的文件并不需要进行代码校验。因此我们需要设置 ESLint 忽略文件规则，让 ESLint 不要去校验这些文件。
+像`node_moudle`、`dist`等目录下的文件并不需要进行代码校验。因此我们需要设置 ESLint 文件忽略规则，让 ESLint 不要去校验这些文件。
 
-ESLint 有两种方式设置 ESLint 忽略文件规则：
+ESLint 有两种方式设置 ESLint 文件忽略规则：
 
 1. 在配置文件中添加 `ignorePatterns`。适用于忽略文件数量较少的情况。
 
