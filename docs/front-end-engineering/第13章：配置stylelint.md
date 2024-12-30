@@ -144,12 +144,7 @@ stylelint [options] [file|dir|glob]*
 
 > [!INFO]
 >
-> **具体需求**：在项目中引入 Stylelint，实现对 CSS 的代码校验。
->
-> 要求功能：
->
-> 1. 自动修正错误代码
-> 2. 在 vscode 中，保存代码时自动修正代码
+> **具体需求**：在项目中引入 Stylelint，实现对 CSS 的代码校验，并开启【保存代码时自动执行 ESLint】功能。
 >
 > 校验规则如下：
 >
