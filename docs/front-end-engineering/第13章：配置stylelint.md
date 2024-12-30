@@ -5,16 +5,20 @@ keywords: 前端工程化,stylelint,代码检测,css
 description: Stylelint 是一个强大、先进的 CSS 代码检查器（linter），可以帮助你规避 CSS 代码中的错误并保持一致的编码风格。
 ---
 
-# Stylelint 概述
+# 配置 Stylelint
 
-> 阅读建议：建议结合《代码检测工具——eslint》一起来阅读本文。stylelint 使用方法和 ESlint 非常相似，要点的详细说明都在《代码检测工具——eslint》中做了讲解。
+> [!TIP]
+>
+> **阅读建议**
+>
+> 建议结合《第 12 章：配置 ESLint》来阅读本文。stylelint 使用方法和 ESlint 非常相似，大部分知识要点在《第 12 章：配置 ESLint》中已做了详细说明。
 
-ESlint 只能检测修复 JavaScript 代码，对于 CSS 代码就无能为力了。Prettier 倒是可以检验 CSS 代码，不过其只能做一些简单的代码格式校验修正工作。
+ESlint 无法对 CSS 代码进行校验。Prettier 倒是可以检验 CSS 代码，不过其只能做一些简单的代码格式校验修正工作。如果想要像类似 ESlint 校验 JavaScript 代码一样的校验 CSS 代码，可以使用 Stylelint。
 
-如果想要拥有 ESlint 校验 JavaScript 代码一样的专业工具来校验 CSS 代码，可使用 Stylelint。
-
-以下是 Stylelint 官网的自述：
-
+> [!INFO]
+>
+> **Stylelint 简介**
+>
 > Stylelint 是一个强大、先进的 CSS 代码检查器（linter），可以帮助你规避 CSS 代码中的错误并保持一致的编码风格。
 >
 > Stylelint 的强大源于：
@@ -33,37 +37,37 @@ ESlint 只能检测修复 JavaScript 代码，对于 CSS 代码就无能为力�
 > - 解析 **类似 CSS 的语法**，例如 SCSS、Sass、Less 以及 SugarSS
 > - 能够从 HTML、Markdown 和 CSS-in-JS 对象以及模板文本中提取 **内嵌的样式代码**
 >
-> ——摘抄自《[Home | Stylelint 中文文档 | Stylelint 中文网](https://www.stylelint.com.cn/)》
+> ——摘抄自《[Home | Stylelint 中文文档 | Stylelint 中文网](https://www.stylelint.cn//)》
 
-了解了 Stylelint 的强大，接下来就是将其引入我们项目中。
-
-# Stylelint 的用法以及配置文件说明
+## Stylelint 的用法说明
 
 Stylelint 的用法和 ESlint 非常相似，下面用一个简单的例子来认识一下:
 
-> 1. 安装 Stylelint 以及标准配置
->
->    ```shell
->    yarn add stylelint stylelint-config-standard --dev
->    ```
->
-> 2. 创建配置`.stylelintrc.js`文件
->
->    ```js
->    module.exports = {
->      extends: ['stylelint-config-standard']
->    }
->    ```
->
-> 3. 运行指令，让 Stylelint 处理项目中的所有 CSS 文件
->
-> ```shell
->  npx stylelint "**/*.css"
-> ```
+1.  安装 Stylelint 以及标准配置插件
 
-## 配置文件类型
+```shell
+yarn add stylelint stylelint-config-standard --dev
+```
 
-Stylelint 支持多种配置文件类型：
+2.  创建配置`.stylelintrc.js`文件
+
+```js
+module.exports = {
+  extends: ['stylelint-config-standard']
+}
+```
+
+3.  运行指令，让 Stylelint 处理项目中的所有 CSS 文件
+
+```shell
+ npx stylelint "**/*.css"
+```
+
+## 第一步，编写配置文件
+
+### 配置文件类型
+
+Stylelint 支持多种配置形式：
 
 - 在`package.json`中添加`stylelint`属性来编写
 - `.stylelintrc`文件
@@ -71,7 +75,7 @@ Stylelint 支持多种配置文件类型：
 - `.stylelintrc.json`
 - `.stylelintrc.yaml`/`.stylelintrc.yml`
 
-## 常用的配置项
+### 常用的配置项
 
 Stylelint 常用的配置属性有`rules`、`extends`、`plugins`
 
@@ -81,15 +85,21 @@ Stylelint 常用的配置属性有`rules`、`extends`、`plugins`
 | extends | 通过`extends`属性，可以将一个或者多个已经存在的配置文件扩展（合并）到当前配置文件中。                                                                            |
 | plugins | 通过`plugins`属性，可以将一个或者多个插件引入到 Stylelint 中。插件是由社区构建的规则或规则集，可能包含方法、工具集、非标准 CSS 特性(如 csss、less)或具体的用例。 |
 
-> 更多属性请查阅：[Configuration | Stylelint 中文文档 | Stylelint 中文网](https://www.stylelint.com.cn/user-guide/configure#customsyntax)
+> [!INFO]
+>
+> 更多属性请查阅：[Configuration | Stylelint 中文文档 | Stylelint 中文网](https://www.stylelint.cn//user-guide/configure#customsyntax)
 
-> `rules`详细说明请查阅：[Rules | Stylelint 中文文档 | Stylelint 中文网](https://www.stylelint.com.cn/user-guide/rules)
+> [!INFO]
+>
+> `rules`详细说明请查阅：[Rules | Stylelint 中文文档 | Stylelint 中文网](https://www.stylelint.cn//user-guide/rules)
 
-## 设置忽略规则
+## 第二步：设置忽略规则
 
-与 ESlint 一样，我们可以设置 Stylelint 忽略规则来忽略哪些我们不想进行校验的文件或者目录。
+与 ESlint 一样，我们可以设置 Stylelint 文件忽略规则来忽略那些我们不想进行校验的文件或者目录。
 
-可以在配置文件中添加`ignoreFiles`字段来实现：
+有两种方式设置文件忽略规则：
+
+1. 在配置文件中添加 `ignoreFiles`。适用于忽略文件数量较少的情况。
 
 ```js
 module.exports = {
@@ -98,14 +108,14 @@ module.exports = {
 }
 ```
 
-此外，还可以通过添加`.stylelintignore`文件来实现：
+2. 创建忽略匹配模式的专用文件（默认为 `.stylelintignore`）。适用于忽略文件数量较多的情况。
 
 ```bash
 # 忽略所有的JS文件
 **/*.js
 ```
 
-## 运行指令说明与封装
+## 第三步：封装运行指令
 
 stylelint 命令基本构成如下：
 
@@ -124,15 +134,17 @@ stylelint [options] [file|dir|glob]*
 --fix  							开启自动修复功能
 ```
 
-> 更多 Options 说明，请查阅：[Command Line Interface (CLI) | Stylelint 中文文档 | Stylelint 中文网](https://www.stylelint.com.cn/user-guide/cli#options)
-
-# 实践
-
-了解了 Stylelint 的用法后，下面通过一个工程化需求来回顾一下：
-
-> **要求**：
+> [!INFO]
 >
-> 在项目中引入 Stylelint，实现对 CSS 的代码校验。
+> 更多 Options 说明，请查阅：[Command Line Interface (CLI) | Stylelint 中文文档 | Stylelint 中文网](https://www.stylelint.cn//user-guide/cli#options)
+
+## 实践
+
+了解了 Stylelint 的用法后，接下来通过一个工程化需求来回顾一下：
+
+> [!INFO]
+>
+> **具体需求**：在项目中引入 Stylelint，实现对 CSS 的代码校验。
 >
 > 要求功能：
 >
@@ -149,11 +161,17 @@ stylelint [options] [file|dir|glob]*
 > - 引入`stylelint-order`插件，实现属性排序
 > - 不对`dist`、`node_modules`进行验证
 
-## 分析
+### 分析
 
-根据校验规则，需要安转 npm 包`stylelint-config-standard`以及`stylelint-order`，然后编写`.stylelintrc.js`文件；不需要对部分目录进行检验，需要编写`.stylelintignore`文件；编写项目的`.vscode`配置文件，实现**“保存代码时自动修正代码”**；封装指令，调用配置文件检验代码并修正。
+分析需求后，可以得出以下结论：
 
-## 实操
+- 安转 npm 包`stylelint-config-standard`以及`stylelint-order`；
+- 编写`.stylelintrc.js`文件，引入`stylelint-config-standard`和`stylelint-order`；
+- 新增`stylelintignore`文件，忽略部分文件；
+- 编写项目的`.vscode/settings.json`配置文件，实现【保存代码时自动修正代码】；
+- 封装指令，调用配置文件检验代码并修正。
+
+### 实操
 
 ### 第一步：安装 stylelint 以及所需的插件
 
@@ -163,7 +181,7 @@ yarn add stylelint@^13.3.3 stylelint-config-standard@^20.0.0 stylelint-order@^6.
 
 ### 第二步：编写.stylelintrc.js
 
-在项目根目录下新增`.stylelintrc.js`。然后进行如下配置：
+在项目根目录下新增`.stylelintrc.js`，进行如下配置：
 
 ```js
 /**
@@ -277,7 +295,7 @@ module.exports = {
 
 ### 第三步：编写.stylelintignore
 
-在项目根目录下新增`.stylelintignore`。然后进行如下配置：
+在项目根目录下新增`.stylelintignore`，进行如下配置：
 
 ```bash
 # stylelint将不对本文件列举的文件或者目录进行校验
@@ -290,11 +308,12 @@ src/assets/css-sprite
 
 ### 第四步：封装运行指令
 
-引用`.stylelintrc.js`、`.stylelintignore`配置文件，对 html、vue、js、css、less 中的代码进行校验，并开启自动修正功能。
+引用`.stylelintrc.js`、`.stylelintignore`配置文件，对 html、vue、js、css、less、sass、scss 文件中的 CSS 代码进行校验，并开启自动修正功能。
 
 ```json
   "scripts": {
-    "lint:stylelint": "stylelint --config .stylelintrc.js --ignore-path .stylelintignore ./**/*.{html,vue,js,css,less,sass,scss} --fix"
+    "lint:stylelint": "stylelint --config .stylelintrc.js --ignore-path .stylelintignore ./**/*.{html,vue,js,css,less,sass,scss}",
+    "lint:stylelint:fix": "yarn lint:stylelint --fix"
   },
 ```
 
@@ -325,3 +344,17 @@ src/assets/css-sprite
   ]
 }
 ```
+
+> [!INFO]
+>
+> 案例代码可查看：
+
+## 写在最后
+
+stylelint 是一个强大的 CSS 代码检查工具，通过配置规则，可以规范团队的代码风格，提高代码质量。本章节介绍了如何配置 stylelint，包括安装、配置规则、编写 .stylelintignore、封装运行指令以及编写 vscode 配置文件。
+
+至此，我们通过 ESLint 和 Stylelint，完成了对 JavaScript 、HTML 和 CSS 代码的自动化检查和规范，确保了代码的质量和一致性。编码风格的自动化检测是前端工程化非常重要的一环，可以帮助团队提高代码质量，减少代码冲突，提高开发效率。同时减轻的代码审查的压力。非常推荐大家在实际项目中使用。
+
+## 参考
+
+- [stylelint 官方文档](https://www.stylelint.cn/)
