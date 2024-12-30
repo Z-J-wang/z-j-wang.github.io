@@ -13,7 +13,10 @@ description: ESLint 是一个根据方案识别并报告 ECMAScript/JavaScript �
 
 ## ESLint 概述
 
-> [!IMPORTANT] ESLint 的定义
+> [!IMPORTANT]
+>
+> **ESLint 的定义**
+>
 > ESLint 是一个根据方案识别并报告 ECMAScript/JavaScript 代码问题的工具，其目的是使代码风格更加一致并避免错误。
 >
 > ——摘自《[ESLint 入门](https://zh-hans.eslint.org/docs/latest/use/getting-started)》
@@ -24,7 +27,9 @@ ESLint 的使用非常简单，只需三步即可：
 2. 配置 ESLint 规则
 3. 执行 ESLint 运行指令
 
-> [!INFO] 下面是官网中的例子
+> [!INFO]
+>
+> 下面是官网中的例子
 >
 > 1. 在项目中安装 ESLint 包：
 >
@@ -86,7 +91,8 @@ ESLint 重难点就是配置文件的编写。可以说，编写好配置文件�
 
 首先，我们简单了解一下配置文件的的构成。
 
-> [!TIP] 配置文件格式
+> [!TIP]
+>
 > ESLint 配置文件支持多做文件格式，本文采用的是`.eslintrc.js`。详见：[配置文件 - ESLint - 插件化的 JavaScript 代码检查工具](https://zh-hans.eslint.org/docs/latest/use/configure/configuration-files#)
 
 ### 配置文件构成
@@ -122,7 +128,8 @@ module.exports = {
 
 插件（`plugins`）是一个可以为 ESLint 添加各种扩展功能的 npm 包。它的作用同样也是用来扩展 ESLint。但与`extends`属性不同的是，插件（`plugins`）不仅仅有配置文件，还可以包括：**插件定义规则**、**插件定义配置**、**插件定义环境**、**插件定义处理器**。
 
-> [!TIP] 需要注意的是
+> [!TIP]
+>
 > 在使用插件(plugins)时，单单在`pluguns`中声明还不行，需要在相应的配置属性中显式声明。
 
 如下示例：
@@ -160,12 +167,15 @@ module.exports = {
 
 了解 Eslint 配置原理后，我们就可以**根据编码规范定制自己的 ESLint 配置**。
 
-> [!IMPORTANT] 注意
+> [!IMPORTANT]
+>
 > 一般情况下，在确认 ESLint 配置清单时，优先采用在业内较为成熟通用的 ESLint 配置，然后在其基础上根据团队编码规范进行调整。
 
 例如，这样一个 ESLint 配置：
 
-> [!INFO] 配置清单
+> [!INFO]
+>
+> **配置清单**
 >
 > - 基于 ESLint 内置的推荐规则`eslint:recommended`
 > - 使用`eslint-plugin-vue`插件
@@ -237,6 +247,7 @@ public
 ```
 
 > [!INFO]
+>
 > 更多说明可查看：[忽略文件 - ESLint - 插件化的 JavaScript 代码检查工具](https://zh-hans.eslint.org/docs/latest/use/configure/ignore)
 
 ## 第三步，封装运行指令
@@ -268,13 +279,16 @@ ESLint 支持的`options`非常多，功能齐全。我们甚至可以通过`opt
 ```
 
 > [!INFO]
+>
 > 更多 options 说明可查看：[ESLint - 命令行界面](https://zh-hans.eslint.org/docs/latest/user-guide/command-line-interface#options)
 
 ### 编写运行指令
 
 接下来基于前面的配置编写 ESLint 运行指令。
 
-> [!INFO] 要求如下
+> [!INFO]
+>
+> **要求如下**：
 >
 > - 使用项目根目录下配置文件`.eslintrc.js`
 > - 使用项目根目录下的文件忽略规则文件`.eslintignore`
@@ -326,6 +340,7 @@ eslint --config .eslintrc.js --ext .js,.vue,.html,.ts --ignore-path .eslintignor
 ## 配合 Prettier 来使用
 
 > [!TIP]
+>
 > 关于两者的更加详细的说明建议查看：[ESLint 之与 Prettier 配合使用 - 掘金 (juejin.cn)](https://juejin.cn/post/6924568874700505102)
 >
 > 这里只做简单的说明。
@@ -338,7 +353,10 @@ Prettier 是一个比 ESLint 更加擅长代码格式（如：单行代码长度
 
 可以安装`eslint-config-prettier`扩展来解决这个问题。
 
-> [!INFO] eslint-config-prettier 说明
+> [!INFO]
+>
+> **eslint-config-prettier 说明**
+>
 > `eslint-config-prettier`扩展禁用了所有与格式相关的 ESLint 规则。
 >
 > 详见：[GitHub - prettier/eslint-config-prettier: Turns off all rules that are unnecessary or might conflict with Prettier.](https://github.com/prettier/eslint-config-prettier)
@@ -428,7 +446,8 @@ module.exports = {
 
 如果觉得每次只能在终端执行指令才能使用 ESLint 代码检测修正还不够方便。那我们可以开启【保存代码时自动执行 ESLint】功能。
 
-> [!TIP] 注意
+> [!TIP]
+>
 > 【保存代码时自动执行 ESLint】功能需要配合代码编辑器的来实现。目前主流的代码编辑器（如：VSCode）都支持该功能。
 
 ### VSCode 配置
@@ -453,7 +472,10 @@ module.exports = {
 }
 ```
 
-> [!INFO] 配置说明
+> [!INFO]
+>
+> **配置说明**
+>
 > `editor.formatOnSave`和`eslint.format.enable`是最主要的两个配置项，一个是开启 VSCode 的**保存代码的时候格式化代码**；一个是开启 ESLint 扩展插件的代码检测和格式化功能。两者配合使用即可**在保存代码是自动根据 ESLint 配置进行代码修正**。
 
 可能你会遇到**代码保存时自动修正后的代码，会导致 ESLint 报错**。这是因为 VSCode 设置的【默认代码格式化工具】并不是 ESLint（可能是 prettier），从而导致了修正结果和 ESLint 规范不一致。
@@ -476,7 +498,10 @@ module.exports = {
 
 ### 自动格式化工作流程说明
 
-> [!INFO] VSCode 自动格式化工作流程说明
+> [!INFO]
+>
+> **VSCode 自动格式化工作流程说明**
+>
 > **第一步**，当 VSCode 通过 ESLint 进行代码修正时，会自动去项目中寻找配置文件（如：`.eslintrc.js`）和`.eslintignore`文件。如果没有找到文件，则会采用 ESLint 默认配置。
 >
 > **第二步**，根据配置文件中的配置来进行代码修正。
