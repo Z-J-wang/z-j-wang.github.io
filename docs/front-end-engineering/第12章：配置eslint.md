@@ -508,6 +508,34 @@ module.exports = {
 
 因此，必须保证 ESLint 配置文件在项目目录中，最好是在根目录下。否则【保存时自动格式】的代码也会和通过指令执行 ESLint 的结果不一致。
 
+## 实践
+
+下面我们通过一个例子来实践一下。
+
+> [!INFO] 具体需求
+> 在项目中使用 ESLint 和 Prettier 实现对 JavaScript 和 HTML 代码的校验，并开启【保存代码时自动执行 ESLint】功能。
+>
+> 功能：
+>
+> - 基于 ESLint 内置的推荐规则`eslint:recommended`
+> - 使用`eslint-plugin-vue`插件
+> - 使用 node 环境变量
+> - 采用`babel-eslint`编译器
+> - 只读的全局变量`$`
+> - 不对忽略部分文件的校验
+> - 一些自定义规则
+
+分析
+分析需求后，可以得出以下结论：
+
+- 需要安装`eslint`、`eslint-plugin-vue`、`babel-eslint`、`eslint-config-prettier`、`eslint-plugin-prettier`等插件。
+- 需要配置`.eslintrc.js`文件。
+- 需要配置`.eslintignore`文件。
+- 需要配置`.prettierrc.js`文件。
+- 需要配置`.prettierignore`文件。
+- 需要配置`.vscode/settings.json`文件，实现【保存代码时自动修正代码】。
+- 封装指令，调用配置文件检验代码并修正。
+
 ## 写在最后
 
 本章节较为全面的阐述了 ESLint 的作用以及如何配置使用 ESLint。ESLint 不但可以规范代码风格，提高代码质量，而且还可以通过 ESLint 的插件机制，实现代码的自动修正，从而提高开发效率。此外，借助 ESLint，我们可以把编码规范中的大多数细节交给工具去处理，从而让代码审查人员把精力集中在业务逻辑、代码质量以及自动化工具无法兼顾的编码规范上。
