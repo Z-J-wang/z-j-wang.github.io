@@ -255,7 +255,7 @@ eslint [options] [file|dir|glob]*
 
 ESLint 支持的`options`非常多，功能齐全。我们甚至可以通过`options`来实现配置文件的所有配置。不过我们并不需要编写很繁琐的运行指令，这是因为配置文件已经完成绝大多数的配置工作。
 
-大多数情况下，我们只需要在运行指令中声明所要使用的**配置文件**、**忽略规则文件**以及**检测文件的匹配规则**即可。
+大多数情况下，我们只需要在运行指令中声明所要使用的**配置文件**、**文件忽略规则文件**以及**检测文件的匹配规则**即可。
 
 以下是一些常用的`options`：
 
@@ -277,7 +277,7 @@ ESLint 支持的`options`非常多，功能齐全。我们甚至可以通过`opt
 > [!INFO] 要求如下
 >
 > - 使用项目根目录下配置文件`.eslintrc.js`
-> - 使用项目根目录下的忽略规则文件`.eslintignore`
+> - 使用项目根目录下的文件忽略规则文件`.eslintignore`
 > - 对后缀为【`.js`，`.ts`，`.vue`，`.html`】的文件进行检测
 > - 启用缓存功能
 > - 检测项目根目录下符合条件的全部文件
@@ -405,7 +405,7 @@ yarn add --dev eslint-plugin-prettier
 Prettier 和 ESLint 一样有配置文件：
 
 - 配置文件：`.prettierrc.js`
-- 忽略规则文件：`.prettierignore`
+- 文件忽略规则文件：`.prettierignore`
 
 在使用时我们并不需要手动去执行 Prettier 指令才能使用 Prettier，ESLint 会自动读取 Prettier 的配置文件来运行 Prettier。
 
