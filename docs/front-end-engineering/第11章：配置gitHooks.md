@@ -162,3 +162,12 @@ export default {
 ## 写在最后
 
 本文主要阐述了 Git hooks 的基本原理及其操作方式，并深入探讨了如何利用 Husky 来高效管理这些 Git hooks。在项目开发流程中，Git hooks 能够助力我们实现自动化操作，例如，在代码提交阶段自动验证 commit message 是否遵循既定规范或者结合 lint-staged 实现代码校验等。在构建前端工程化体系时，Git hooks 无疑是一个举足轻重的工具，它不仅能够提升代码质量管理水平，还能促进团队协作的顺畅进行，且可根据实际需求灵活配置与应用。
+
+> [!TIP] 本章节涉及的代码可查看：
+> 待补充
+
+## 参考
+
+- https://commitlint.js.org/reference/configuration.html
+- https://typicode.github.io/husky/
+- https://git-scm.com/docs/githooks
