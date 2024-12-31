@@ -5,7 +5,11 @@ keywords: 前端工程化,ESLint,代码检测,JavaScript,Prettier
 description: ESLint 是一个根据方案识别并报告 ECMAScript/JavaScript 代码问题的工具，其目的是使代码风格更加一致并避免错误。
 ---
 
-# 第 12 章：配置 eslint
+# 配置 ESLint
+
+> [!TIP] 阅前悉知
+>
+> 本章节基于 [ESLint v8](https://zh-hans.eslint.org/docs/latest/use/getting-started) 版本进行编写。由于 v9 版本在配置上与 v8 版本有所不同，因此，如果您使用的是 v9 版本，请参考《[文档 - ESLint 中文网](https://eslint.nodejs.cn/docs/latest/)》。
 
 在制定团队 SOP 阶段，我们已经了解了编码规范的重要性以及完成了编码规范的制定。接下来，我们需要将编码规范应用到实际开发中，确保团队成员遵循编码规范。如果通过代码审查来手动检查代码规范，那么工作量会非常大，而且容易出错。好在，我们可以借助自动化工具来帮助我们自动检查代码规范，这些自动化工具有 ESLint、Stylelint、Prettier 等。
 
@@ -13,9 +17,7 @@ description: ESLint 是一个根据方案识别并报告 ECMAScript/JavaScript �
 
 ## ESLint 概述
 
-> [!IMPORTANT]
->
-> **ESLint 的定义**
+> [!IMPORTANT] ESLint 的定义
 >
 > ESLint 是一个根据方案识别并报告 ECMAScript/JavaScript 代码问题的工具，其目的是使代码风格更加一致并避免错误。
 >
@@ -27,9 +29,7 @@ ESLint 的使用非常简单，只需三步即可：
 2. 配置 ESLint 规则
 3. 执行 ESLint 运行指令
 
-> [!INFO]
->
-> 下面是官网中的例子
+> [!INFO] 下面是官网中的例子
 >
 > 1. 在项目中安装 ESLint 包：
 >
@@ -99,16 +99,16 @@ ESLint 重难点就是配置文件的编写。可以说，编写好配置文件�
 
 常见的 ESLint 配置文件属性如下：
 
-| 属性            | 说明                                                                                                                                                                                                                                                                                                                                                                                                           | 案例                                                |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| `root`          | **指定当前配置文件所在目录为根目录**。ESLint 在执行时会自动向上（父目录）查找配置文件，直到文件系统的根目录（`/`）、当前用户的主目录（`~/`）或指定 `root: true` 时停止。一般情况下，我们都会在项目文件根目录中放置 ESLint 配置文件，并将`root`设置为`true`。                                                                                                                                                   | `{"root":true}`                                     |
-| `env`           | **指定 JavaScript 代码的所用到的全局变量。其接受一个对象，可配置多种运行环境**。JavaScript 生态中有多个运行时、版本、扩展和框架。每个所支持的全局变量都不尽相同。例如，项目代码中用到了 ES6 的写法，我们就需要通过`env`属性来向 ESLint 声明 ES6 的全局变量。所支持的环境可查看：[语言选项 - ESLint - 插件化的 JavaScript 代码检查工具](https://zh-hans.eslint.org/docs/latest/use/configure/language-options#) | `{"env":{"browser": true,"node": true}}`            |
-| ignorePatterns  | **指定 Eslint 在检测时忽略的文件或者目录。其值是个正则数组**。等同于`.eslintignore`文件。                                                                                                                                                                                                                                                                                                                      | `{ignorePatterns:["temp.js","**/vendor/*.js"]}`     |
-| `parserOptions` | **指定 ESLint 支持的 JavaScript 语言解析器。其接受一个对象，可配置多种语言解析器**。ESLint 默认支持 ES5 语法的解析，如果我们想要支持 ES6、JSX 或者 TS 等，需要在`parserOptions`中声明对应的解析器。否则 ESLint 将无法解析相关代码。注意配合`env`属性，`env`声明的是语法中的全局变量，`parserOptions`声明的是支持的语法。                                                                                       | `{"parserOptions":{"ecmaVersion":6}}`               |
-| globals         | **自定义全局变量。其接受一个对象**。全局变量为属性名，可操作性为属性值。对于每个全局变量的键，将相应的值设置为 `"writable"` 以允许变量被覆盖，或者 `"readonly"` 以禁止覆盖。                                                                                                                                                                                                                                   | `{"globals":{"var1":"writable","var2":"readonly"}}` |
-| `plugins`       | **指定要使用的 ESLint 插件**。属性值可以是一个插件名称，也可以是插件名称组成的数组。详见：[配置插件与解析器 - ESLint - 插件化的 JavaScript 代码检查工具](https://zh-hans.eslint.org/docs/latest/use/configure/plugins)                                                                                                                                                                                         | `{"plugins": ["react"]}`                            |
-| `extends`       | **指定扩展配置文件。配置文件使用扩展后，就可以继承另一个配置文件的所有特征（包括规则、插件和语言选项）并修改所有选项**。属性值可以是一个字符串，也可以是字符串数组。字符串的值可来源于四种途径：配置文件的路径、可共享配置的名称、`eslint:recommended`、`eslint:all`                                                                                                                                           | `{ "extends": "eslint:recommended"}`                |
-| `rules`         | **自定义规则。在`rules`属性中可以自定义 ESLint 规则来覆盖默认规则、扩展规则以及插件规则**。其值为对象。详见：[配置规则 - ESLint - 插件化的 JavaScript 代码检查工具](https://zh-hans.eslint.org/docs/latest/use/configure/rules#-3)                                                                                                                                                                             | `{"rules": {"quotes": ["error", "double"]}}`        |
+| 属性             | 说明                                                                                                                                                                                                                                                                                                                                                                                                           | 案例                                                |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| `root`           | **指定当前配置文件所在目录为根目录**。ESLint 在执行时会自动向上（父目录）查找配置文件，直到文件系统的根目录（`/`）、当前用户的主目录（`~/`）或指定 `root: true` 时停止。一般情况下，我们都会在项目文件根目录中放置 ESLint 配置文件，并将`root`设置为`true`。                                                                                                                                                   | `{"root":true}`                                     |
+| `env`            | **指定 JavaScript 代码的所用到的全局变量。其接受一个对象，可配置多种运行环境**。JavaScript 生态中有多个运行时、版本、扩展和框架。每个所支持的全局变量都不尽相同。例如，项目代码中用到了 ES6 的写法，我们就需要通过`env`属性来向 ESLint 声明 ES6 的全局变量。所支持的环境可查看：[语言选项 - ESLint - 插件化的 JavaScript 代码检查工具](https://zh-hans.eslint.org/docs/latest/use/configure/language-options#) | `{"env":{"browser": true,"node": true}}`            |
+| `ignorePatterns` | **指定 Eslint 在检测时忽略的文件或者目录。其值是个正则数组**。等同于`.eslintignore`文件。                                                                                                                                                                                                                                                                                                                      | `{ignorePatterns:["temp.js","**/vendor/*.js"]}`     |
+| `parserOptions`  | **指定 ESLint 支持的 JavaScript 语言解析器。其接受一个对象，可配置多种语言解析器**。ESLint 默认支持 ES5 语法的解析，如果我们想要支持 ES6、JSX 或者 TS 等，需要在`parserOptions`中声明对应的解析器。否则 ESLint 将无法解析相关代码。注意配合`env`属性，`env`声明的是语法中的全局变量，`parserOptions`声明的是支持的语法。                                                                                       | `{"parserOptions":{"ecmaVersion":6}}`               |
+| globals          | **自定义全局变量。其接受一个对象**。全局变量为属性名，可操作性为属性值。对于每个全局变量的键，将相应的值设置为 `"writable"` 以允许变量被覆盖，或者 `"readonly"` 以禁止覆盖。                                                                                                                                                                                                                                   | `{"globals":{"var1":"writable","var2":"readonly"}}` |
+| `plugins`        | **指定要使用的 ESLint 插件**。属性值可以是一个插件名称，也可以是插件名称组成的数组。详见：[配置插件与解析器 - ESLint - 插件化的 JavaScript 代码检查工具](https://zh-hans.eslint.org/docs/latest/use/configure/plugins)                                                                                                                                                                                         | `{"plugins": ["react"]}`                            |
+| `extends`        | **指定扩展配置文件。配置文件使用扩展后，就可以继承另一个配置文件的所有特征（包括规则、插件和语言选项）并修改所有选项**。属性值可以是一个字符串，也可以是字符串数组。字符串的值可来源于四种途径：配置文件的路径、可共享配置的名称、`eslint:recommended`、`eslint:all`                                                                                                                                           | `{ "extends": "eslint:recommended"}`                |
+| `rules`          | **自定义规则。在`rules`属性中可以自定义 ESLint 规则来覆盖默认规则、扩展规则以及插件规则**。其值为对象。详见：[配置规则 - ESLint - 插件化的 JavaScript 代码检查工具](https://zh-hans.eslint.org/docs/latest/use/configure/rules#-3)                                                                                                                                                                             | `{"rules": {"quotes": ["error", "double"]}}`        |
 
 ### 插件与扩展说明
 
@@ -173,14 +173,11 @@ module.exports = {
 
 例如，这样一个 ESLint 配置：
 
-> [!INFO]
->
-> **配置清单**
+> [!INFO] 配置清单
 >
 > - 基于 ESLint 内置的推荐规则`eslint:recommended`
 > - 使用`eslint-plugin-vue`插件
 > - 使用 node 环境变量
-> - 采用`babel-eslint`编译器
 > - 只读的全局变量`$`
 > - 一些自定义规则
 
@@ -192,12 +189,9 @@ module.exports = {
   env: {
     node: true
   },
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
   // 全局变量。详见https://zh-hans.eslint.org/docs/latest/use/configure/language-options#-6
   globals: {
-    // $: 'readonly'
+    $: 'readonly'
   },
   // eslint 规则扩展
   extends: [
@@ -353,9 +347,7 @@ Prettier 是一个比 ESLint 更加擅长代码格式（如：单行代码长度
 
 可以安装`eslint-config-prettier`扩展来解决这个问题。
 
-> [!INFO]
->
-> **eslint-config-prettier 说明**
+> [!INFO] eslint-config-prettier 说明
 >
 > `eslint-config-prettier`扩展禁用了所有与格式相关的 ESLint 规则。
 >
@@ -425,7 +417,7 @@ Prettier 和 ESLint 一样有配置文件：
 - 配置文件：`.prettierrc.js`
 - 文件忽略规则文件：`.prettierignore`
 
-在使用时我们并不需要手动去执行 Prettier 指令才能使用 Prettier，ESLint 会自动读取 Prettier 的配置文件来运行 Prettier。
+在使用时我们并不需要手动去执行 Prettier 指令，ESLint 会自动读取 Prettier 的配置文件来运行 Prettier。
 
 `.prettierrc.js`举例：
 
@@ -472,11 +464,9 @@ module.exports = {
 }
 ```
 
-> [!INFO]
+> [!INFO] 配置说明
 >
-> **配置说明**
->
-> `editor.formatOnSave`和`eslint.format.enable`是最主要的两个配置项，一个是开启 VSCode 的**保存代码的时候格式化代码**；一个是开启 ESLint 扩展插件的代码检测和格式化功能。两者配合使用即可**在保存代码是自动根据 ESLint 配置进行代码修正**。
+> `editor.formatOnSave`和`eslint.format.enable`是最主要的两个配置项，一个是开启 VSCode 的**保存代码时自动格式化代码功能**；一个是开启 ESLint 扩展插件的代码检测和格式化功能。两者配合使用即可实现**在保存代码时自动根据 ESLint 配置进行代码修正**。
 
 可能你会遇到**代码保存时自动修正后的代码，会导致 ESLint 报错**。这是因为 VSCode 设置的【默认代码格式化工具】并不是 ESLint（可能是 prettier），从而导致了修正结果和 ESLint 规范不一致。
 
@@ -498,9 +488,7 @@ module.exports = {
 
 ### 自动格式化工作流程说明
 
-> [!INFO]
->
-> **VSCode 自动格式化工作流程说明**
+> [!INFO] VSCode 自动格式化工作流程说明
 >
 > **第一步**，当 VSCode 通过 ESLint 进行代码修正时，会自动去项目中寻找配置文件（如：`.eslintrc.js`）和`.eslintignore`文件。如果没有找到文件，则会采用 ESLint 默认配置。
 >
@@ -508,37 +496,9 @@ module.exports = {
 
 因此，必须保证 ESLint 配置文件在项目目录中，最好是在根目录下。否则【保存时自动格式】的代码也会和通过指令执行 ESLint 的结果不一致。
 
-## 实践
-
-下面我们通过一个例子来实践一下。
-
-> [!INFO] 具体需求
-> 在项目中使用 ESLint 和 Prettier 实现对 JavaScript 和 HTML 代码的校验，并开启【保存代码时自动执行 ESLint】功能。
->
-> 功能：
->
-> - 基于 ESLint 内置的推荐规则`eslint:recommended`
-> - 使用`eslint-plugin-vue`插件
-> - 使用 node 环境变量
-> - 采用`babel-eslint`编译器
-> - 只读的全局变量`$`
-> - 不对忽略部分文件的校验
-> - 一些自定义规则
-
-分析
-分析需求后，可以得出以下结论：
-
-- 需要安装`eslint`、`eslint-plugin-vue`、`babel-eslint`、`eslint-config-prettier`、`eslint-plugin-prettier`等插件。
-- 需要配置`.eslintrc.js`文件。
-- 需要配置`.eslintignore`文件。
-- 需要配置`.prettierrc.js`文件。
-- 需要配置`.prettierignore`文件。
-- 需要配置`.vscode/settings.json`文件，实现【保存代码时自动修正代码】。
-- 封装指令，调用配置文件检验代码并修正。
-
 ## 写在最后
 
-本章节较为全面的阐述了 ESLint 的作用以及如何配置使用 ESLint。ESLint 不但可以规范代码风格，提高代码质量，而且还可以通过 ESLint 的插件机制，实现代码的自动修正，从而提高开发效率。此外，借助 ESLint，我们可以把编码规范中的大多数细节交给工具去处理，从而让代码审查人员把精力集中在业务逻辑、代码质量以及自动化工具无法兼顾的编码规范上。
+本章节简单阐述了 ESLint 的作用以及如何配置使用 ESLint。ESLint 不但可以规范代码风格，提高代码质量，而且还可以通过 ESLint 的插件机制，实现代码的自动修正，从而提高开发效率。借助 ESLint，可以把编码规范中的大多数细节交给工具去识别，从而**使得代码审查人员可以把精力集中到业务逻辑、代码质量等自动化工具无法兼顾的编码规范上**。
 
 ## 参考
 
