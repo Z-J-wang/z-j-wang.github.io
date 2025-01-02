@@ -500,6 +500,9 @@ module.exports = {
 
 本章节简单阐述了 ESLint 的作用以及如何配置使用 ESLint。ESLint 不但可以规范代码风格，提高代码质量，而且还可以通过 ESLint 的插件机制，实现代码的自动修正，从而提高开发效率。借助 ESLint，可以把编码规范中的大多数细节交给工具去识别，从而**使得代码审查人员可以把精力集中到业务逻辑、代码质量等自动化工具无法兼顾的编码规范上**。
 
+> [!TIP]
+> 如果现目基于 Vue 且初始化前已经明确了要使用 ESLint，则可在初始化时选择启用 ESLint。这样在项目初始化时，会自动生成基础 ESLint 相关的配置文件。后面只需根据项目需求，对 ESLint 配置文件进行修改即可。
+
 ## 参考
 
 - [ESLint 入门](https://zh-hans.eslint.org/docs/latest/use/getting-started)
