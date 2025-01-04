@@ -138,32 +138,80 @@ stylelint [options] [file|dir|glob]*
 >
 > 更多 Options 说明，请查阅：[Command Line Interface (CLI) | Stylelint 中文文档 | Stylelint 中文网](https://www.stylelint.cn//user-guide/cli#options)
 
+## 配合 Prettier 来使用，v15.0.0 版本后不再需要
+
+> [!IMPORTANT] 注意
+> 在 Stylelint v15.0.0 版本后，Stylelint 移除了与 Prettier 冲突的规则，因此不再需要`stylelint-config-prettier`插件。
+>
+> 详见： [Migrating to 15.0.0 | Stylelint](https://stylelint.io/migration-guide/to-15/#deprecated-stylistic-rules)
+
+与 ESLint 类似，Stylelint 也可以和 Prettier 配合使用，实现代码格式化功能。两者结合使用时，需要安装`stylelint-config-prettier`插件来解决冲突。
+
+1. 安装`stylelint-config-prettier`插件
+
+```bash
+yarn add stylelint-config-prettier --dev
+```
+
+2. 在配置文件中引入`stylelint-config-prettier`
+
+```js{4}
+module.exports = {
+  extends: [
+    'stylelint-config-standard', // stylelint-config-standard等其他配置
+    'stylelint-config-prettier' // 需要保证stylelint-config-prettier在extends数组的最后
+  ]
+}
+```
+
+## 开启【保存自动格式化代码】功能
+
+与 ESLint 类似，Stylelint 也可以在保存代码时自动格式化代码。
+以 VSCode 为例，在项目根目录下创建`.vscode/settings.json`文件，并添加如下配置：
+
+```json
+{
+  "editor.formatOnSave": true, // 开启编辑器保存自动格式化代码功能
+  // 保存代码时运行代码操作
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit" // 开启自动修复功能
+  },
+  "stylelint.enable": true, // 开启stylelint插件自动格式化功能
+  "stylelint.validate": ["css", "html", "less", "vue", "vue-html"] // 设定需要支持的文件类型
+}
+```
+
+> [!INFO] 配置说明：
+>
+> - `editor.formatOnSave`声明开启保存格式化功能
+> - `editor.codeActionsOnSave`声明保存时运行代码操作，其中`source.fixAll`表示运行所有可修复的代码操作
+> - `stylelint.enable`声明开启 stylelint 插件
+> - `stylelint.validate`声明需要支持的文件类型。默认仅支持 CSS 文件。
+
 ## 实践
 
 了解了 Stylelint 的用法后，接下来通过一个工程化需求来回顾一下：
 
 > [!INFO] 具体需求
 >
-> 在项目中引入 Stylelint，实现对 CSS 的代码校验，并开启【保存代码时自动执行 ESLint】功能。
+> 在项目中引入 Stylelint，实现对 CSS 的代码校验，并开启【保存自动格式化代码】功能。
 >
 > 校验规则如下：
 >
-> - 扩展`stylelint-config-standard`
-> - 色彩编码要求小写，长度 6 位
-> - 禁止空的代码块
-> - 禁止使用未知的伪类选择器，但可以使用`::v-deep`
-> - 禁止小于 1 的小数有一个前导零
+> - 采用`stylelint-config-standard`规则
+> - 色彩编码要求长度 6 位
 > - 引入`stylelint-order`插件，实现属性排序
-> - 不对`dist`、`node_modules`进行验证
+> - 仅校验`.vue`、`.css`、`.less`、`.html`、`.xml`文件
+> - 忽略`dist`、`node_modules`目录
 
 ### 分析
 
 分析需求后，可以得出以下结论：
 
-- 安转 npm 包`stylelint-config-standard`以及`stylelint-order`；
-- 编写`.stylelintrc.js`文件，引入`stylelint-config-standard`和`stylelint-order`；
+- 安装 npm 包`stylelint-config-standard`、`stylelint-order`、`less`、`postcss-html`、`stylelint`、`stylelint-config-standard-vue`等；
+- 编写`.stylelintrc.js`文件，引入`stylelint-config-standard`、`stylelint-order`、`stylelint-config-standard-vue`等；
 - 新增`stylelintignore`文件，忽略部分文件；
-- 编写项目的`.vscode/settings.json`配置文件，实现【保存代码时自动修正代码】；
+- 编写项目的`.vscode/settings.json`配置文件，实现【保存自动格式化代码】；
 - 封装指令，调用配置文件检验代码并修正。
 
 ### 实操
@@ -171,7 +219,7 @@ stylelint [options] [file|dir|glob]*
 ### 第一步：安装 stylelint 以及所需的插件
 
 ```shell
-yarn add stylelint@^13.3.3 stylelint-config-standard@^20.0.0 stylelint-order@^6.0.3 --dev
+yarn add less postcss-html stylelint stylelint-config-html stylelint-config-standard stylelint-config-standard-less stylelint-config-standard-vue stylelint-order --dev
 ```
 
 ### 第二步：编写.stylelintrc.js
@@ -179,32 +227,18 @@ yarn add stylelint@^13.3.3 stylelint-config-standard@^20.0.0 stylelint-order@^6.
 在项目根目录下新增`.stylelintrc.js`，进行如下配置：
 
 ```js
-/**
- * stylelint 依赖如下：
- * "stylelint": "^13.3.3"
- * "stylelint-config-standard": "^20.0.0"
- * "stylelint-order": "^6.0.3"
- *
- * vue2 中 stylelint 需要v13及以下版本
- * stylelint-config-standard v20.0.0为stylelint v13.3.3 配套版本
- * stylelint-order 用于样式属性排序
- */
-
-module.exports = {
-  extends: ['stylelint-config-standard'],
+/** @type {import('stylelint').Config} */
+export default {
+  root: true,
+  extends: [
+    'stylelint-config-standard', // 配置 stylelint 拓展插件
+    'stylelint-config-standard-less',
+    'stylelint-config-html/vue'
+    // 'stylelint-config-prettier', // 配置 stylelint 和 prettier 的兼容. v15 后不再需要
+  ],
   plugins: ['stylelint-order'],
   rules: {
-    'color-hex-case': 'lower', // 颜色指定小写
-    'block-no-empty': true, // 禁止空块
     'color-hex-length': 'long', // 颜色6位长度
-    // 忽略伪类选择器 ::v-deep
-    'selector-pseudo-element-no-unknown': [
-      true,
-      {
-        ignorePseudoElements: ['v-deep']
-      }
-    ],
-    'number-leading-zero': 'always', // 禁止小于 1 的小数有一个前导零
     // 属性的排序
     'order/properties-order': [
       'position',
@@ -294,21 +328,24 @@ module.exports = {
 
 ```bash
 # stylelint将不对本文件列举的文件或者目录进行校验
-dist
 node_modules
+dist
+public
+dist-ssr
+coverage
 
-# css-sprite生成文件
-src/assets/css-sprite
+# 忽略所有的JS文件
+**/*.{js,jsx,ts,tsx,mjs}
 ```
 
 ### 第四步：封装运行指令
 
-引用`.stylelintrc.js`、`.stylelintignore`配置文件，对 html、vue、js、css、less、sass、scss 文件中的 CSS 代码进行校验，并开启自动修正功能。
+封装运行指令，对 html、vue、css、less 文件中的 CSS 代码进行校验，并开启自动修正功能。
 
 ```json
   "scripts": {
-    "lint:stylelint": "stylelint --config .stylelintrc.js --ignore-path .stylelintignore ./**/*.{html,vue,js,css,less,sass,scss}",
-    "lint:stylelint:fix": "yarn lint:stylelint --fix"
+    "lint:stylelint": "stylelint \"{src,test}/**/*.{vue,css,less,html,xml}\"",
+    "lint:stylelint:fix": "yarn lint:stylelint --fix",
   },
 ```
 
@@ -318,25 +355,13 @@ src/assets/css-sprite
 
 ```json
 {
+  "editor.formatOnSave": true, // 开启编辑器保存自动格式化代码功能
+  // 保存代码时运行代码操作
   "editor.codeActionsOnSave": {
-    "source.fixAll.stylelint": true
+    "source.fixAll": "explicit" // 开启自动修复功能
   },
-  "stylelint.enable": true,
-  "stylelint.validate": [
-    "css",
-    "html",
-    "javascript",
-    "less",
-    "postcss",
-    "sass",
-    "scss",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "vue-html",
-    "vue-postcss",
-    "xml"
-  ]
+  "stylelint.enable": true, // 开启stylelint插件自动格式化功能
+  "stylelint.validate": ["css", "html", "less", "vue", "xml"] // 设定需要支持的文件类型
 }
 ```
 

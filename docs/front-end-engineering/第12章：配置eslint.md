@@ -434,13 +434,13 @@ module.exports = {
 }
 ```
 
-## 开启【保存代码时自动执行 ESLint】功能
+## 开启【保存自动格式化代码】功能
 
-如果觉得每次只能在终端执行指令才能使用 ESLint 代码检测修正还不够方便。那我们可以开启【保存代码时自动执行 ESLint】功能。
+如果觉得每次只能在终端执行指令才能使用 ESLint 代码检测修正还不够方便。那我们可以开启【保存自动格式化代码】功能。
 
 > [!TIP]
 >
-> 【保存代码时自动执行 ESLint】功能需要配合代码编辑器的来实现。目前主流的代码编辑器（如：VSCode）都支持该功能。
+> 【保存自动格式化代码】功能需要配合代码编辑器的来实现。目前主流的代码编辑器（如：VSCode）都支持该功能。
 
 ### VSCode 配置
 
@@ -452,15 +452,9 @@ module.exports = {
 {
   "editor.formatOnSave": true, // 开启编辑器保存自动格式化代码功能
   "eslint.format.enable": true, // 开启eslint扩展插件代码格式化功能
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.VSCode-eslint" // 指定默认编辑器代码格式化工具为dbaeumer.VSCode-eslint
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.VSCode-eslint"
-  },
-  "[vue]": {
-    "editor.defaultFormatter": "dbaeumer.VSCode-eslint"
-  }
 }
 ```
 
