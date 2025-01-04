@@ -7,11 +7,13 @@ description: Stylelint 是一个强大、先进的 CSS 代码检查器（linter�
 
 # 配置 Stylelint
 
-> [!TIP]
+> [!TIP] 阅读建议
 >
-> **阅读建议**
+> 建议结合[《第 12 章：配置 ESLint》](./第12章：配置eslint.md)来阅读本文。stylelint 使用方法和 ESlint 非常相似，大部分知识要点在《第 12 章：配置 ESLint》中已做了详细说明。
+
+> [!TIP] 阅前悉知
 >
-> 建议结合《第 12 章：配置 ESLint》来阅读本文。stylelint 使用方法和 ESlint 非常相似，大部分知识要点在《第 12 章：配置 ESLint》中已做了详细说明。
+> 本章节基于 [Stylelint v16](https://www.stylelint.cn/) 版本进行编写。由于 Stylelint 一直在更新，不同版本之间可能存在差异。如果你在参照本文进行操作，务必保证使用的版本为 v16 或者详细查看[升级指南](https://stylelint.io/migration-guide/to-16)。
 
 ESlint 无法对 CSS 代码进行校验。Prettier 倒是可以检验 CSS 代码，不过其只能做一些简单的代码格式校验修正工作。如果想要像类似 ESlint 校验 JavaScript 代码一样的校验 CSS 代码，可以使用 Stylelint。
 
@@ -364,10 +366,6 @@ coverage
   "stylelint.validate": ["css", "html", "less", "vue", "xml"] // 设定需要支持的文件类型
 }
 ```
-
-> [!INFO]
->
-> 案例代码可查看：
 
 ## 写在最后
 
