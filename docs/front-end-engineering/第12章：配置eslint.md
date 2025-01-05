@@ -434,13 +434,13 @@ module.exports = {
 }
 ```
 
-## 开启【保存代码时自动执行 ESLint】功能
+## 开启【保存自动格式化代码】功能
 
-如果觉得每次只能在终端执行指令才能使用 ESLint 代码检测修正还不够方便。那我们可以开启【保存代码时自动执行 ESLint】功能。
+如果觉得每次只能在终端执行指令才能使用 ESLint 代码检测修正还不够方便。那我们可以开启【保存自动格式化代码】功能。
 
 > [!TIP]
 >
-> 【保存代码时自动执行 ESLint】功能需要配合代码编辑器的来实现。目前主流的代码编辑器（如：VSCode）都支持该功能。
+> 【保存自动格式化代码】功能需要配合代码编辑器的来实现。目前主流的代码编辑器（如：VSCode）都支持该功能。
 
 ### VSCode 配置
 
@@ -452,15 +452,9 @@ module.exports = {
 {
   "editor.formatOnSave": true, // 开启编辑器保存自动格式化代码功能
   "eslint.format.enable": true, // 开启eslint扩展插件代码格式化功能
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.VSCode-eslint" // 指定默认编辑器代码格式化工具为dbaeumer.VSCode-eslint
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.VSCode-eslint"
-  },
-  "[vue]": {
-    "editor.defaultFormatter": "dbaeumer.VSCode-eslint"
-  }
 }
 ```
 
@@ -499,6 +493,9 @@ module.exports = {
 ## 写在最后
 
 本章节简单阐述了 ESLint 的作用以及如何配置使用 ESLint。ESLint 不但可以规范代码风格，提高代码质量，而且还可以通过 ESLint 的插件机制，实现代码的自动修正，从而提高开发效率。借助 ESLint，可以把编码规范中的大多数细节交给工具去识别，从而**使得代码审查人员可以把精力集中到业务逻辑、代码质量等自动化工具无法兼顾的编码规范上**。
+
+> [!TIP]
+> 如果现目基于 Vue 且初始化前已经明确了要使用 ESLint，则可在初始化时选择启用 ESLint。这样在项目初始化时，会自动生成基础 ESLint 相关的配置文件。后面只需根据项目需求，对 ESLint 配置文件进行修改即可。
 
 ## 参考
 
