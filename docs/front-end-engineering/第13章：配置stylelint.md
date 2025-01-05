@@ -233,10 +233,10 @@ yarn add less postcss-html stylelint stylelint-config-html stylelint-config-stan
 export default {
   root: true,
   extends: [
-    'stylelint-config-standard', // 配置 stylelint 拓展插件
-    'stylelint-config-standard-less',
-    'stylelint-config-html/vue'
-    // 'stylelint-config-prettier', // 配置 stylelint 和 prettier 的兼容. v15 后不再需要
+    'stylelint-config-standard', // 标准规则
+    'stylelint-config-standard-less', // less规则
+    'stylelint-config-html/html', // html规则，用于识别html中的style标签
+    'stylelint-config-html/vue' // vue规则，用于识别vue中的style标签
   ],
   plugins: ['stylelint-order'],
   rules: {

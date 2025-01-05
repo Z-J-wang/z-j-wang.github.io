@@ -24,3 +24,6 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# 忽略所有的JS文件
+**/*.{js,jsx,ts,tsx,mjs}
