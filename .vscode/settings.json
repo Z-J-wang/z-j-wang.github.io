@@ -3,12 +3,15 @@
   "explorer.fileNesting.patterns": {
     "tsconfig.json": "tsconfig.*.json, env.d.ts",
     "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
-    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig, commitlint.config.js, .stylelintignore, .stylelintrc.cjs"
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig, commitlint.config.js, .stylelint*"
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
   "editor.formatOnSave": true,
+  "eslint.format.enable": true, // 开启eslint扩展插件代码格式化功能
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "stylelint.enable": true, // 开启stylelint插件自动格式化功能
+  "stylelint.validate": ["css", "html", "less", "vue", "xml"], // 设定需要支持的文件类型
   "cSpell.words": ["autocrlf", "devel", "ignorecase", "oneline", "quotepath", "reflog"]
 }
