@@ -6,6 +6,10 @@ hero:
   name: 专栏汇总
 
 features:
+  - title: 前端工程化专栏（完善中）
+    details: 本专栏主要介绍前端工程化相关的内容，包括但不限于模块化、组件化、自动化构建、代码规范、性能优化等。
+    link: /front-end-engineering
+    linkText: Learn more
   - title: 杂谈专栏
     details: 一些闲聊、一些瞎扯、一些突发奇想、一些乱七八糟。
     link: /tittle-tattle
@@ -13,10 +17,6 @@ features:
   - title: 前端与 SEO 专栏
     details: 深入探讨 SEO 的概念、相关知识和在前端项目中的优化方法。
     link: /seo
-    linkText: Learn more
-  - title: 前端工程化专栏（完善中）
-    details: 本专栏主要介绍前端工程化相关的内容，包括但不限于模块化、组件化、自动化构建、代码规范、性能优化等。
-    link: /front-end-engineering
     linkText: Learn more
   - title: Vue 3 迁移策略笔记
     details: 本专栏为读后笔记，所有的篇幅是基于 Vue 官方文档《v3 迁移指南》，然后对相关的知识点做了补充和列举。
