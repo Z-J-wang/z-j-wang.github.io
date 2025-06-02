@@ -112,6 +112,12 @@ echo "export default { extends: ['@commitlint/config-conventional'] };" > commit
 
 ### 配置 Husky
 
+执行以下命令，在项目根目录下创建一个`.husky/`目录：
+
+```bash
+npx husky init
+```
+
 执行以下命令，在`.husky/`目录下创建一个`commit-msg`文件，并添加内容：
 
 ```bash
