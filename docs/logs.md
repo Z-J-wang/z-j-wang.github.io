@@ -20,7 +20,7 @@
 
 ## 2024-11-6
 
-- [《Vue3 迁移策略笔记》](./vue2-to-vue3)专栏发布
+- [《Vue3 迁移策略笔记》](./vue3-migration-guide)专栏发布
 - [《Vue CLI 4.0 webpack 配置专栏》](./webpack-vue-cli4)专栏发布
 - 新增[《专栏汇总》](./special-column.md)页面
 
