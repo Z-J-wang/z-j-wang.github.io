@@ -20,7 +20,7 @@ features:
     linkText: Learn more
   - title: Vue 3 迁移策略笔记
     details: 本专栏为读后笔记，所有的篇幅是基于 Vue 官方文档《v3 迁移指南》，然后对相关的知识点做了补充和列举。
-    link: /vue2-to-vue3
+    link: /vue3-migration-guide
     linkText: Learn more
   - title: vue-cli4.0 webpack配置说明
     details: 本系列是一个 Vue CLI 4.0 webpack 的入门专栏，主要介绍的是 Vue CLI 4.0 webpack 基础内容，将会结合 Vue CLI 4.0 的官方文档，对 Vue CLI 4.0 的 webpack 的一些常用配置属性进行讲解。

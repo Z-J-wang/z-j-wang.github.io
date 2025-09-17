@@ -80,11 +80,11 @@ const sidebarConfig: DefaultTheme.Sidebar = {
       items: createSideBar([], '/front-end-engineering')
     }
   ],
-  '/vue2-to-vue3/': [
+  '/vue3-migration-guide/': [
     {
       text: 'Vue3 迁移策略笔记',
       collapsed: false,
-      items: createSideBar([], '/vue2-to-vue3')
+      items: createSideBar([], '/vue3-migration-guide')
     }
   ],
   '/web-optimization/': [
