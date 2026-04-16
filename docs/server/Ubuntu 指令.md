@@ -34,7 +34,7 @@ systemctl 是 Linux 操作系统中的 systemd 系统和服务管理器，用于
 - 允许开机启动：`systemctl enable ssh`
 - 列出所有运行的服务：`systemctl list-units`
 
-## 决当前用户操作 docker 时无权限问题——设立 docker 用户组
+## 如果当前用户操作 docker 时无权限问题——设立 docker 用户组
 
 ```sh
 sudo chown root:docker /var/run/docker.sock # 修改docker.sock权限为root:docker
@@ -89,3 +89,6 @@ scp [可选参数] file_source file_target
 
 - -r： 递归复制整个目录。
 - -P port：注意是大写的 P, port 是指定数据传输用到的端口号
+
+
+
